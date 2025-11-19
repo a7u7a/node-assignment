@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Node as NodeType } from "../../types";
-import { getState } from "../../utils";
+import { useNodeContext } from "./hooks/useNodeContext";
 import styles from "./Node.module.css";
 
 interface NodeProps {
@@ -9,15 +8,14 @@ interface NodeProps {
   y?: number;
 }
 
-const Node = ({ data, x = 0, y = 0 }: NodeProps) => {
-  const [hovered, setHovered] = useState(false);
-  const [selected, setSelected] = useState(false);
-  const state = getState(data);
+const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
   const { title } = data;
+  const { hovered, setHovered, selected, setSelected } = useNodeContext();
+  const nodeClass = `${styles.node} ${hovered ? styles.nodeHovered : ""}}`;
 
-  const nodeClass = `${styles.node} ${styles[state]} ${
-    hovered ? styles.nodeHovered : ""
-  } ${selected ? styles.selected : ""}`;
+  // const nodeClass = `${styles.node} ${hovered ? styles.nodeHovered : ""} ${
+  //   selected ? styles.selected : ""
+  // }`;
 
   return (
     <g
@@ -39,8 +37,11 @@ const Node = ({ data, x = 0, y = 0 }: NodeProps) => {
       <text className={styles.nodeText} x={0} y={5} textAnchor="middle">
         {title}
       </text>
+      <text className={styles.codeText} x={0} y={20} textAnchor="middle">
+        Subtitle
+      </text>
     </g>
   );
 };
 
-export default Node;
+export default NodeContainer;

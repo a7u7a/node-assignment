@@ -1,3 +1,2 @@
-import Node from "./Node";
-
-export default Node;
+import NodeWrapper from "./NodeWrapper";
+export default NodeWrapper;

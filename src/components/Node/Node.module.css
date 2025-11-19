@@ -18,6 +18,10 @@
   transition: fill var(--node-transition-duration) var(--node-transition-timing);
 }
 
+.codeText {
+  font-family: var(--node-font-family-mono);
+}
+
 /* State: Hovered */
 .node:hover .nodeRect,
 .node.hovered .nodeRect,
@@ -87,4 +91,3 @@
   fill: var(--node-color-warning-text);
   font-weight: var(--node-font-weight-medium);
 }
-

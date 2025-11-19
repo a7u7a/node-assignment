@@ -36,6 +36,7 @@
 
   /* Typography */
   --node-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --node-font-family-mono: 'Geist Mono', 'Courier New', Courier, monospace;
   --node-font-size: 14px;
   --node-font-weight-light: 300;
   --node-font-weight-regular: 400;
