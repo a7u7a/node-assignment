@@ -1,0 +1,49 @@
+:root {
+  /* Node State Colors */
+  --node-color-idle: #ffffff;
+  --node-color-idle-border: #000000;
+  --node-color-idle-text: #000000;
+
+  --node-color-hovered: #f0f7ff;
+  --node-color-hovered-border: #2563eb;
+  --node-color-hovered-text: #1e40af;
+
+  --node-color-selected: #dbeafe;
+  --node-color-selected-border: #1d4ed8;
+  --node-color-selected-text: #1e3a8a;
+
+  --node-color-loading: #fef3c7;
+  --node-color-loading-border: #f59e0b;
+  --node-color-loading-text: #92400e;
+
+  --node-color-success: #d1fae5;
+  --node-color-success-border: #10b981;
+  --node-color-success-text: #065f46;
+
+  --node-color-error: #fee2e2;
+  --node-color-error-border: #ef4444;
+  --node-color-error-text: #991b1b;
+
+  --node-color-warning: #fed7aa;
+  --node-color-warning-border: #f97316;
+  --node-color-warning-text: #9a3412;
+
+  /* Node Dimensions */
+  --node-width: 150px;
+  --node-height: 80px;
+  --node-border-radius: 8px;
+  --node-border-width: 2px;
+
+  /* Typography */
+  --node-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --node-font-size: 14px;
+  --node-font-weight-light: 300;
+  --node-font-weight-regular: 400;
+  --node-font-weight-medium: 500;
+  --node-font-weight-semibold: 600;
+
+  /* Transitions */
+  --node-transition-duration: 200ms;
+  --node-transition-timing: ease-in-out;
+}
+

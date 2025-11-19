@@ -8,6 +8,8 @@ export interface Node {
   };
   errors?: string[];
   warnings?: string[];
+  loading?: boolean;
+  success?: boolean;
   settings?: {
     alwaysOutputData?: boolean;
     executeOnce?: boolean;
