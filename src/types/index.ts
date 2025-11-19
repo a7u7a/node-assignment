@@ -16,3 +16,7 @@ export interface Node {
     retryOnFail?: boolean;
   };
 }
+
+export interface IconProps {
+  index: number;
+}

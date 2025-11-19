@@ -1,5 +1,8 @@
 import { Node as NodeType } from "../../types";
 import { useNodeContext } from "./hooks/useNodeContext";
+import { PlayIcon, EnabledIcon } from "../icons";
+import NodeTitle from "./components/NodeTitle";
+import Stack from "../Stack";
 import styles from "./Node.module.css";
 
 interface NodeProps {
@@ -7,6 +10,8 @@ interface NodeProps {
   x?: number;
   y?: number;
 }
+
+const nodeRadius = 14;
 
 const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
   const { title } = data;
@@ -19,7 +24,7 @@ const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
     nodePositions,
   } = useNodeContext();
   const { width, height } = nodeDimensions;
-  const { rectX, rectY } = nodePositions;
+  const { rectX, rectY, rightEdge, topEdge, leftEdge } = nodePositions;
   const nodeClass = `${styles.node} ${hovered ? styles.nodeHovered : ""}}`;
 
   return (
@@ -37,14 +42,18 @@ const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
         y={rectY}
         width={width}
         height={height}
-        rx={14}
+        rx={nodeRadius}
       />
-      <text className={styles.nodeText} x={0} y={5} textAnchor="middle">
-        {title}
-      </text>
-      <text className={styles.codeText} x={0} y={20} textAnchor="middle">
-        Subtitle
-      </text>
+      {/* <Stack anchorPos={{ x: leftEdge, y: topEdge }}>
+        <NodeTitle title={title} />
+        <text className={styles.codeText} x={0} y={0} textAnchor="start">
+          Subtitle
+        </text>
+      </Stack> */}
+      <Stack anchorPos={{ x: rightEdge, y: topEdge }}>
+        <PlayIcon />
+        <EnabledIcon />
+      </Stack>
     </g>
   );
 };
