@@ -14,7 +14,7 @@ interface NodeProps {
 const nodeRadius = 14;
 
 const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
-  const { title } = data;
+  const { title, subtitle } = data;
   const {
     hovered,
     setHovered,
@@ -44,13 +44,11 @@ const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
         height={height}
         rx={nodeRadius}
       />
-      {/* <Stack anchorPos={{ x: leftEdge, y: topEdge }}>
+      <Stack direction="column" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeTitle title={title} />
-        <text className={styles.codeText} x={0} y={0} textAnchor="start">
-          Subtitle
-        </text>
-      </Stack> */}
-      <Stack anchorPos={{ x: rightEdge, y: topEdge }}>
+        <NodeTitle title={subtitle} />
+      </Stack>
+      <Stack direction="column" anchorPos={{ x: rightEdge, y: topEdge }}>
         <PlayIcon />
         <EnabledIcon />
       </Stack>

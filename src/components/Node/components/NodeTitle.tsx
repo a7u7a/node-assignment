@@ -1,7 +1,7 @@
 import styles from "../Node.module.css";
 import { useStackChild } from "../../../hooks";
 interface NodeTitleProps {
-  title: string;
+  title?: string;
 }
 
 const NodeTitle = ({ title }: NodeTitleProps) => {

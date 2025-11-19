@@ -4,6 +4,7 @@ const nodes: Node[] = [
   {
     id: "0",
     title: "Node 0",
+    subtitle: "Subtitle 0",
   },
   {
     id: "1",

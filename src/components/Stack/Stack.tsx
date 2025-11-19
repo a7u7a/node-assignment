@@ -2,10 +2,11 @@ import { Children, ReactElement, useMemo } from "react";
 import { StackProvider } from "./context/StackContext";
 import { useStackContext } from "./hooks/useStackContext";
 // import { useNodeContext } from "../Node/hooks/useNodeContext";
+import { getStackWidth, getStackHeight } from "./utils";
 
 interface StackProps {
   direction?: "row" | "column";
-  justifyContent?: "start" | "end";
+  justify?: "start" | "end";
   anchorPos: {
     x: number;
     y: number;
@@ -16,14 +17,14 @@ interface StackProps {
 
 const StackContent = ({
   direction = "row",
-  // justifyContent = "start",
+  justify = "start",
   anchorPos,
   gap = 5,
   children,
 }: StackProps) => {
   const { childDimensions } = useStackContext();
-  // const { nodeDimensions } = useNodeContext();
-  // const { width: nodeWidth, height: nodeHeight } = nodeDimensions;
+  const stackHeight = getStackHeight(childDimensions);
+  const stackWidth = getStackWidth(childDimensions);
   const childArray = Children.toArray(children) as ReactElement[];
 
   const childPositions = useMemo(() => {
@@ -47,20 +48,18 @@ const StackContent = ({
       }
     });
 
-    // const totalSize = 0;
+    const stackSize = direction === "row" ? stackWidth : stackHeight;
+    if (justify === "end" && (stackWidth > 0 || stackHeight > 0)) {
+      const offset = stackSize;
 
-    // if (justifyContent === "end" && totalSize > 0) {
-    //   const containerSize = direction === "row" ? nodeWidth : nodeHeight;
-    //   const offset = containerSize - totalSize;
-
-    //   positions.forEach((pos) => {
-    //     if (direction === "row") {
-    //       pos.x += offset;
-    //     } else {
-    //       pos.y += offset;
-    //     }
-    //   });
-    // }
+      positions.forEach((pos) => {
+        if (direction === "row") {
+          pos.x -= offset;
+        } else {
+          pos.y -= offset;
+        }
+      });
+    }
 
     return positions;
   }, [
@@ -68,9 +67,9 @@ const StackContent = ({
     childArray,
     direction,
     gap,
-    // justifyContent,
-    // nodeWidth,
-    // nodeHeight,
+    stackWidth,
+    stackHeight,
+    justify,
   ]);
 
   return (
