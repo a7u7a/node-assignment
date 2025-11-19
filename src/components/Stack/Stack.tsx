@@ -1,8 +1,8 @@
 import { Children, ReactElement, useMemo } from "react";
-import { StackProvider } from "./context/StackContext";
-import { useStackContext } from "./hooks/useStackContext";
-// import { useNodeContext } from "../Node/hooks/useNodeContext";
-import { getStackWidth, getStackHeight } from "./utils";
+import { StackProvider } from "@/components/Stack/context/StackContext";
+import { useStackContext } from "@/components/Stack/hooks";
+// import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { getStackWidth, getStackHeight } from "@/components/Stack/utils";
 
 interface StackProps {
   direction?: "row" | "column";

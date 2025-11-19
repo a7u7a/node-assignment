@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import useMeasure from "react-use-measure";
-import styles from "./Slide.module.css";
+import styles from "@/components/Canvas/Canvas.module.css";
 
-interface SlideProps {
+interface CanvasProps {
   children?: ReactNode;
 }
 
-const Slide = ({ children }: SlideProps) => {
+const Canvas = ({ children }: CanvasProps) => {
   const [ref, bounds] = useMeasure();
   const { width, height } = bounds;
   const halfWidth = width / 2;
@@ -25,4 +25,4 @@ const Slide = ({ children }: SlideProps) => {
   );
 };
 
-export default Slide;
+export default Canvas;

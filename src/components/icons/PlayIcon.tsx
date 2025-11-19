@@ -1,4 +1,4 @@
-import { useStackChild } from "../../hooks";
+import { useStackChild } from "@/components/Stack/hooks";
 
 const PlayIcon = () => {
   const { ref } = useStackChild();

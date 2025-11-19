@@ -1,4 +1,4 @@
-import PlayIcon from "./PlayIcon";
-import EnabledIcon from "./EnabledIcon";
+import PlayIcon from "@/components/icons/PlayIcon";
+import EnabledIcon from "@/components/icons/EnabledIcon";
 
 export { PlayIcon, EnabledIcon };

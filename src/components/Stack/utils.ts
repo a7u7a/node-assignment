@@ -1,4 +1,4 @@
-import { ChildDimensions } from "./context/context";
+import { ChildDimensions } from "@/components/Stack/context/context";
 
 export const getStackWidth = (
   childDimensions: Map<number, ChildDimensions>

@@ -1,2 +1,1 @@
-import Node from "./Node";
-export default Node;
+export { default } from "@/components/Node/Node";

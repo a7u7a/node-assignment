@@ -1,5 +1,5 @@
 import { useState, useMemo, ReactNode, useCallback, useRef, useEffect } from "react";
-import { StackContext, ChildDimensions } from "./context";
+import { StackContext, ChildDimensions } from "@/components/Stack/context/context";
 
 interface StackProviderProps {
   children: ReactNode;

@@ -1,5 +1,5 @@
-import styles from "../Node.module.css";
-import { useStackChild } from "../../../hooks";
+import styles from "@/components/Node/Node.module.css";
+import { useStackChild } from "@/components/Stack/hooks";
 interface NodeTitleProps {
   title?: string;
 }

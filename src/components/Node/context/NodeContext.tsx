@@ -1,6 +1,6 @@
 import { useState, useMemo, ReactNode } from "react";
-import { NodeContext } from "./context";
-import { getNodePositions } from "../../../utils";
+import { NodeContext } from "@/components/Node/context/context";
+import { getNodePositions } from "@/utils";
 
 interface NodeProviderProps {
   children: ReactNode;

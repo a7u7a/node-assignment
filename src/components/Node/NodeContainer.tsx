@@ -1,19 +1,17 @@
-import { Node as NodeType } from "../../types";
-import { useNodeContext } from "./hooks/useNodeContext";
-import { PlayIcon, EnabledIcon } from "../icons";
-import NodeTitle from "./components/NodeTitle";
-import Stack from "../Stack";
-import styles from "./Node.module.css";
+import { NodeType } from "@/types";
+import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { PlayIcon, EnabledIcon } from "@/components/icons";
+import NodeTitle from "@/components/Node/components/NodeTitle";
+import Stack from "@/components/Stack";
+import styles from "@/components/Node/Node.module.css";
 
-interface NodeProps {
+interface NodeContainerProps {
   data: NodeType;
-  x?: number;
-  y?: number;
 }
 
 const nodeRadius = 14;
 
-const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
+const NodeContainer = ({ data }: NodeContainerProps) => {
   const { title, subtitle } = data;
   const {
     hovered,
@@ -29,7 +27,7 @@ const NodeContainer = ({ data, x = 0, y = 0 }: NodeProps) => {
 
   return (
     <g
-      transform={`translate(${x}, ${y})`}
+      transform={`translate(0, 0)`}
       className={nodeClass}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

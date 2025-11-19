@@ -1,4 +1,4 @@
-export interface Node {
+export interface NodeType {
   id: string;
   title: string;
   subtitle?: string;
@@ -6,14 +6,16 @@ export interface Node {
     x: number;
     y: number;
   };
-  errors?: string[];
-  warnings?: string[];
-  loading?: boolean;
-  success?: boolean;
-  settings?: {
-    alwaysOutputData?: boolean;
-    executeOnce?: boolean;
-    retryOnFail?: boolean;
+  errors: string[];
+  showErrors: boolean;
+  warnings: string[];
+  showWarnings: boolean;
+  loading: boolean;
+  success: boolean;
+  settings: {
+    alwaysOutputData: boolean;
+    executeOnce: boolean;
+    retryOnFail: boolean;
   };
 }
 

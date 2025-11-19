@@ -1,6 +1,14 @@
-import { useRef, useEffect } from "react";
+import { useContext, useRef, useEffect } from "react";
 import useMeasure from "react-use-measure";
-import { useStackContext } from "./components/Stack";
+import { StackContext } from "@/components/Stack/context/context";
+
+export const useStackContext = () => {
+  const context = useContext(StackContext);
+  if (!context) {
+    throw new Error("useStackContext must be used within a StackProvider");
+  }
+  return context;
+};
 
 export const useStackChild = () => {
   const { setChildDimensions, registerChild } = useStackContext();

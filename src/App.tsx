@@ -1,16 +1,14 @@
-import Slide from "./components/Slide";
-import Node from "./components/Node";
-import styles from "./App.module.css";
-import nodes from "./nodes";
+import Canvas from "@/components/Canvas";
+import Node from "@/components/Node";
+import styles from "@/App.module.css";
+import initialNodeState from "@/data";
 
 function App() {
   return (
     <div className={styles.app}>
-      {nodes.map((node) => (
-        <Slide key={node.id}>
-          <Node data={node} />
-        </Slide>
-      ))}
+      <Canvas>
+        <Node initialState={initialNodeState} />
+      </Canvas>
     </div>
   );
 }
