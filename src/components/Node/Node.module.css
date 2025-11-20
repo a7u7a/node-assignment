@@ -18,21 +18,32 @@
   transition: fill var(--node-transition-duration) var(--node-transition-timing);
 }
 
-.codeText {
-  font-family: var(--node-font-family-mono);
+.h1 {
+  fill: var(--node-color-idle-text);
+  font-family: var(--node-font-family);
+  font-size: var(--node-font-h1);
+  font-weight: var(--node-font-weight-medium);
 }
 
-/* State: Hovered */
+.p {
+  fill: var(--node-color-idle-text);
+  font-family: var(--node-font-family);
+  font-size: var(--node-font-size-p);
+  font-weight: var(--node-font-weight-regular);
+}
+
+.codeText {
+  font-family: var(--node-font-family-mono);
+  font-size: var(--node-font-size-p);
+}
+
 .node:hover .nodeRect,
-.node.hovered .nodeRect,
-.node.nodeHovered .nodeRect {
+.node {
   fill: var(--node-color-hovered);
   stroke: var(--node-color-hovered-border);
 }
 
-.node:hover .nodeText,
-.node.hovered .nodeText,
-.node.nodeHovered .nodeText {
+.node:hover .nodeText {
   fill: var(--node-color-hovered-text);
 }
 

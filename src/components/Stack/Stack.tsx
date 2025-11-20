@@ -1,7 +1,6 @@
 import { Children, ReactElement, useMemo } from "react";
 import { StackProvider } from "@/components/Stack/context/StackContext";
 import { useStackContext } from "@/components/Stack/hooks";
-// import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import { getStackDimensions } from "@/components/Stack/utils";
 
 interface StackProps {
@@ -31,10 +30,6 @@ const StackContent = ({
     stackingDirection
   );
   const childArray = Children.toArray(children) as ReactElement[];
-  console.log("childDimensions", childDimensions);
-
-  console.log("stackHeight", stackHeight);
-  console.log("stackWidth", stackWidth);
   const childPositions = useMemo(() => {
     if (childDimensions.size === 0) return [];
 
@@ -87,7 +82,7 @@ const StackContent = ({
       y: anchorPos.y + (offsetY === "top" ? 0 : -stackHeight),
     };
   }, [anchorPos, offsetX, offsetY, stackWidth, stackHeight]);
-  console.log("childPositions", childPositions);
+
   return (
     <g
       transform={`translate(${effectiveAnchorPos.x}, ${effectiveAnchorPos.y})`}

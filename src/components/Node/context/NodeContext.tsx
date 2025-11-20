@@ -1,6 +1,6 @@
 import { useState, useMemo, ReactNode } from "react";
 import { NodeContext } from "@/components/Node/context/context";
-import { getNodePositions } from "@/utils";
+import { getNodeContentArea } from "@/utils";
 
 interface NodeProviderProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export const NodeProvider = ({ children, nodeDimensions }: NodeProviderProps) =>
   const [selected, setSelected] = useState(false);
   
   const nodePositions = useMemo(
-    () => getNodePositions(nodeDimensions),
+    () => getNodeContentArea(nodeDimensions),
     [nodeDimensions]
   );
 

@@ -8,6 +8,7 @@ import DeltaIcon from "@/components/icons/DeltaIcon";
 import AlwaysOutputIcon from "@/components/icons/AlwaysOutputIcon";
 import RetryIcon from "@/components/icons/RetryIcon";
 import ErrorIcon from "@/components/icons/ErrorIcon";
+import IOIcon from "@/components/icons/IOIcon";
 
 export {
   PlayIcon,
@@ -20,4 +21,5 @@ export {
   AlwaysOutputIcon,
   RetryIcon,
   ErrorIcon,
+  IOIcon,
 };

@@ -5,7 +5,7 @@
   --node-color-idle-text: #000000;
 
   --node-color-hovered: #f0f7ff;
-  --node-color-hovered-border: #2563eb;
+  --node-color-hovered-border: #7c7c7c;
   --node-color-hovered-text: #1e40af;
 
   --node-color-selected: #dbeafe;
@@ -38,7 +38,10 @@
   --node-font-weight-medium: 500;
   --node-font-weight-semibold: 600;
 
-  --node-transition-duration: 200ms;
+  --node-font-size-h1: 20px;
+  --node-font-size-p: 13px;
+
+  --node-transition-duration: 100ms;
   --node-transition-timing: ease-in-out;
 }
 

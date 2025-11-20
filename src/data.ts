@@ -2,8 +2,8 @@ import { NodeType } from "@/types";
 
 const initialNodeState: NodeType = {
   id: "0",
-  title: "Node 0",
-  subtitle: "Subtitle 0",
+  title: "Get a DONKY solar flare",
+  subtitle: "Get:DONKY solar flare",
   errors: [],
   showErrors: false,
   warnings: [],

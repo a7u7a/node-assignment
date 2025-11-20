@@ -1,15 +1,16 @@
-export const getNodePositions = (nodeDimensions: {
+const NODE_PADDING = 5;
+
+export const getNodeContentArea = (nodeDimensions: {
   width: number;
   height: number;
 }) => {
-  const padding = 5;
   const { width, height } = nodeDimensions;
   const rectX = -width / 2;
   const rectY = -height / 2;
-  const leftEdge = rectX + padding;
-  const rightEdge = rectX + width - padding;
-  const topEdge = rectY + padding;
-  const bottomEdge = rectY + height - padding;
+  const leftEdge = rectX + NODE_PADDING;
+  const rightEdge = rectX + width - NODE_PADDING;
+  const topEdge = rectY + NODE_PADDING;
+  const bottomEdge = rectY + height - NODE_PADDING;
   const centerX = rectX + width / 2;
   const centerY = rectY + height / 2;
   return {
