@@ -1,10 +1,11 @@
 import styles from "@/components/Node/Node.module.css";
 import { useStackChild } from "@/components/Stack/hooks";
+
 interface NodeTitleProps {
   title?: string;
 }
 
-const NodeTitle = ({ title }: NodeTitleProps) => {
+const NodeText = ({ title }: NodeTitleProps) => {
   const { ref } = useStackChild();
 
   return (
@@ -13,4 +14,4 @@ const NodeTitle = ({ title }: NodeTitleProps) => {
     </text>
   );
 };
-export default NodeTitle;
+export default NodeText;

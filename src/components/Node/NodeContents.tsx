@@ -1,7 +1,7 @@
 import { NodeType } from "@/types";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import { PlayIcon, EnabledIcon } from "@/components/icons";
-import NodeTitle from "@/components/Node/components/NodeTitle";
+import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
 import styles from "@/components/Node/Node.module.css";
 
@@ -11,7 +11,7 @@ interface NodeContainerProps {
 
 const nodeRadius = 14;
 
-const NodeContainer = ({ data }: NodeContainerProps) => {
+const NodeContents = ({ data }: NodeContainerProps) => {
   const { title, subtitle } = data;
   const {
     hovered,
@@ -42,11 +42,15 @@ const NodeContainer = ({ data }: NodeContainerProps) => {
         height={height}
         rx={nodeRadius}
       />
-      <Stack direction="column" anchorPos={{ x: leftEdge, y: topEdge }}>
-        <NodeTitle title={title} />
-        <NodeTitle title={subtitle} />
+      <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
+        <NodeText title={title} />
+        <NodeText title={subtitle} />
       </Stack>
-      <Stack direction="column" anchorPos={{ x: rightEdge, y: topEdge }}>
+      <Stack
+        stackingDirection="left"
+        align="right-top"
+        anchorPos={{ x: rightEdge, y: topEdge }}
+      >
         <PlayIcon />
         <EnabledIcon />
       </Stack>
@@ -54,4 +58,4 @@ const NodeContainer = ({ data }: NodeContainerProps) => {
   );
 };
 
-export default NodeContainer;
+export default NodeContents;

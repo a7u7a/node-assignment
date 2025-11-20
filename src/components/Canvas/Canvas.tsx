@@ -3,7 +3,7 @@ import useMeasure from "react-use-measure";
 import styles from "@/components/Canvas/Canvas.module.css";
 
 interface CanvasProps {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const Canvas = ({ children }: CanvasProps) => {

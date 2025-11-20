@@ -5,8 +5,8 @@ import { useStackContext } from "@/components/Stack/hooks";
 import { getStackWidth, getStackHeight } from "@/components/Stack/utils";
 
 interface StackProps {
-  direction?: "row" | "column";
-  justify?: "start" | "end";
+  align?: "right-bottom" | "left-bottom" | "right-top" | "left-top";
+  stackingDirection?: "right" | "left" | "top" | "down";
   anchorPos: {
     x: number;
     y: number;
@@ -16,8 +16,8 @@ interface StackProps {
 }
 
 const StackContent = ({
-  direction = "row",
-  justify = "start",
+  stackingDirection = "right",
+  align = "left-top",
   anchorPos,
   gap = 5,
   children,
@@ -31,45 +31,75 @@ const StackContent = ({
     const positions: Array<{ x: number; y: number }> = [];
     let currentOffset = 0;
 
+    // Calculate relative positions based on stacking direction
     childArray.forEach((_, index) => {
       const dims = childDimensions.get(index);
 
-      if (direction === "row") {
-        positions.push({ x: currentOffset, y: 0 });
-        if (dims) {
-          currentOffset += dims.width + gap;
-        }
-      } else {
-        // column
-        positions.push({ x: 0, y: currentOffset });
-        if (dims) {
-          currentOffset += dims.height + gap;
-        }
+      switch (stackingDirection) {
+        case "right":
+          positions.push({ x: currentOffset, y: 0 });
+          if (dims) {
+            currentOffset += dims.width + gap;
+          }
+          break;
+        case "left":
+          positions.push({ x: -currentOffset, y: 0 });
+          if (dims) {
+            currentOffset += dims.width + gap;
+          }
+          break;
+        case "down":
+          positions.push({ x: 0, y: currentOffset });
+          if (dims) {
+            currentOffset += dims.height + gap;
+          }
+          break;
+        case "top":
+          positions.push({ x: 0, y: -currentOffset });
+          if (dims) {
+            currentOffset += dims.height + gap;
+          }
+          break;
       }
     });
 
-    const stackSize = direction === "row" ? stackWidth : stackHeight;
-    if (justify === "end" && (stackWidth > 0 || stackHeight > 0)) {
-      const offset = stackSize;
+    // Apply alignment offset to position the stack relative to anchor
+    let alignOffsetX = 0;
+    let alignOffsetY = 0;
 
-      positions.forEach((pos) => {
-        if (direction === "row") {
-          pos.x -= offset;
-        } else {
-          pos.y -= offset;
-        }
-      });
+    const isHorizontal = stackingDirection === "right" || stackingDirection === "left";
+    const totalWidth = isHorizontal ? stackWidth + (childArray.length - 1) * gap : Math.max(...Array.from(childDimensions.values()).map(d => d.width));
+    const totalHeight = !isHorizontal ? stackHeight + (childArray.length - 1) * gap : Math.max(...Array.from(childDimensions.values()).map(d => d.height));
+
+    // Horizontal alignment
+    if (align.includes("right")) {
+      alignOffsetX = -totalWidth;
+    } else if (align.includes("left")) {
+      alignOffsetX = 0;
     }
+
+    // Vertical alignment
+    if (align.includes("bottom")) {
+      alignOffsetY = -totalHeight;
+    } else if (align.includes("top")) {
+      alignOffsetY = 0;
+    }
+
+    // Apply alignment offset to all positions
+    positions.forEach((pos) => {
+      pos.x += alignOffsetX;
+      pos.y += alignOffsetY;
+    });
 
     return positions;
   }, [
     childDimensions,
     childArray,
-    direction,
+    stackingDirection,
+    align,
     gap,
     stackWidth,
     stackHeight,
-    justify,
   ]);
 
   return (

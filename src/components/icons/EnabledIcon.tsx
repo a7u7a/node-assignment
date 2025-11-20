@@ -1,11 +1,16 @@
-import { useStackChild } from "@/components/Stack/hooks";
+import Icon from "@/components/icons/Icon";
 
 const EnabledIcon = () => {
-  const { ref } = useStackChild();
+  return (
+    <Icon>
+      <EnabledPath />
+    </Icon>
+  );
+};
 
+const EnabledPath = () => {
   return (
     <path
-      ref={ref}
       d="M17.1144 8.98127C17.1143 4.48959 13.473 0.848485 8.98127 0.848485C4.48961 0.848526 0.848526 4.48961 0.848485 8.98127C0.848485 13.473 4.48959 17.1143 8.98127 17.1144C13.473 17.1144 17.1144 13.473 17.1144 8.98127ZM17.9625 8.98127C17.9625 13.9415 13.9415 17.9625 8.98127 17.9625C4.02111 17.9625 0 13.9414 0 8.98127C4.115e-05 4.02113 4.02113 4.11475e-05 8.98127 0C13.9414 0 17.9625 4.02111 17.9625 8.98127Z"
       fill="black"
     />

@@ -1,6 +1,6 @@
 import { NodeType } from "@/types";
 import { NodeProvider } from "@/components/Node/context/NodeContext";
-import NodeContainer from "@/components/Node/NodeContainer";
+import NodeContents from "@/components/Node/NodeContents";
 
 interface NodeProps {
   initialState: NodeType;
@@ -13,7 +13,7 @@ const Node = ({ initialState }: NodeProps) => {
 
   return (
     <NodeProvider nodeDimensions={{ width: nodeWidth, height: nodeHeight }}>
-      <NodeContainer data={initialState} />
+      <NodeContents data={initialState} />
     </NodeProvider>
   );
 };

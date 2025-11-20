@@ -10,6 +10,7 @@ export const useStackContext = () => {
   return context;
 };
 
+// TO-DO move to lib
 export const useStackChild = () => {
   const { setChildDimensions, registerChild } = useStackContext();
   const indexRef = useRef<number | null>(null);
