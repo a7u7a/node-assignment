@@ -1,13 +1,11 @@
 .node {
   cursor: pointer;
-  transition: all var(--node-transition-duration) var(--node-transition-timing);
 }
 
 .nodeRect {
   fill: var(--node-color-idle);
   stroke: var(--node-color-idle-border);
   stroke-width: var(--node-border-width);
-  transition: all var(--node-transition-duration) var(--node-transition-timing);
 }
 
 .nodeText {
@@ -22,7 +20,7 @@
   fill: var(--node-color-idle-text);
   font-family: var(--node-font-family);
   font-size: var(--node-font-h1);
-  font-weight: var(--node-font-weight-medium);
+  font-weight: var(--node-font-weight-semibold);
 }
 
 .p {

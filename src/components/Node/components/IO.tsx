@@ -1,0 +1,63 @@
+import { IOIcon } from "@/components/icons";
+import Stack from "@/components/Stack";
+import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import DebugRect from "@/components/Node/components/DebugRect";
+import { useControls } from "leva";
+import { useMemo } from "react";
+
+const IO = () => {
+  const { nodePositions } = useNodeContext();
+  const { IOTopEdge, IOLeftEdge, IORightEdge, bottomEdge } = nodePositions;
+
+  const { numInputs, numOutputs } = useControls("IO", {
+    numInputs: { options: [0, 1, 2, 3], value: 1 },
+    numOutputs: { options: [0, 1, 2, 3], value: 1 },
+  });
+
+  const inputs = useMemo(
+    () =>
+      Array.from({ length: numInputs }, (_, i) => (
+        <IOIcon key={`input-${i}`} />
+      )),
+    [numInputs]
+  );
+
+  const outputs = useMemo(
+    () =>
+      Array.from({ length: numOutputs }, (_, i) => (
+        <IOIcon key={`output-${i}`} />
+      )),
+    [numOutputs]
+  );
+
+  return (
+    <>
+      {/* Inputs */}
+      <Stack
+        stackingDirection="down"
+        offsetX="right"
+        anchorPos={{ x: IOLeftEdge, y: IOTopEdge }}
+      >
+        {inputs}
+      </Stack>
+
+      {/* Outputs */}
+      <Stack
+        stackingDirection="down"
+        anchorPos={{ x: IORightEdge, y: IOTopEdge }}
+      >
+        {outputs}
+      </Stack>
+
+      <DebugRect
+        x={IOLeftEdge}
+        y={IOTopEdge}
+        width={IORightEdge - IOLeftEdge}
+        height={bottomEdge - IOTopEdge}
+        color="green"
+      />
+    </>
+  );
+};
+
+export default IO;

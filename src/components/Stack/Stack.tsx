@@ -1,4 +1,4 @@
-import { Children, ReactElement, useMemo } from "react";
+import { Children, ReactElement, ReactNode, useMemo } from "react";
 import { StackProvider } from "@/components/Stack/context/StackContext";
 import { useStackContext } from "@/components/Stack/hooks";
 import { getStackDimensions } from "@/components/Stack/utils";
@@ -12,7 +12,7 @@ interface StackProps {
     y: number;
   };
   gap?: number;
-  children: ReactElement | ReactElement[];
+  children?: ReactNode;
 }
 
 const StackContent = ({

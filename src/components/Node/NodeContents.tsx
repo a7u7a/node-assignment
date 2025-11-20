@@ -1,42 +1,30 @@
 import { NodeType } from "@/types";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
-import {
-  PlayIcon,
-  EnabledIcon,
-  ExecuteOnceIcon,
-  DeleteIcon,
-  AlwaysOutputIcon,
-  RetryIcon,
-  IOIcon,
-} from "@/components/icons";
+import { PlayIcon, EnabledIcon, DeleteIcon } from "@/components/icons";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
-import styles from "@/components/Node/Node.module.css";
+import DebugRect from "@/components/Node/components/DebugRect";
 import {
   NodeDimensions,
   NodePositions,
-} from "@/components/Node/context/context";
+} from "@/components/Node/context/NodeContext";
+import SettingsBadges from "@/components/Node/components/SettingsBadges";
+import styles from "@/components/Node/Node.module.css";
+import IO from "@/components/Node/components/IO";
 interface NodeContainerProps {
   data: NodeType;
 }
 
 const NODE_RADIUS = 14;
 
-const IO_PADDING_X = 10;
-const IO_PADDING_TOP = 20;
-
 const NodeContents = ({ data }: NodeContainerProps) => {
   const { title, subtitle } = data;
   const { selected, setSelected, nodeDimensions, nodePositions } =
     useNodeContext();
 
-  const { rightEdge, topEdge, leftEdge, bottomEdge, rectY } = nodePositions;
+  const { rightEdge, topEdge, leftEdge, bottomEdge } = nodePositions;
 
   const nodeClass = `${styles.node}}`;
-
-  const IOTopEdge = rectY + IO_PADDING_TOP;
-  const IOLeftEdge = leftEdge - IO_PADDING_X;
-  const IORightEdge = rightEdge + IO_PADDING_X;
 
   return (
     <g
@@ -45,7 +33,9 @@ const NodeContents = ({ data }: NodeContainerProps) => {
       onMouseDown={() => setSelected(true)}
       onClick={() => setSelected(!selected)}
     >
+      <IO />
       <NodeRect nodeDimensions={nodeDimensions} nodePositions={nodePositions} />
+      
       {/* Top left */}
       <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeText
@@ -67,15 +57,7 @@ const NodeContents = ({ data }: NodeContainerProps) => {
       </Stack>
 
       {/* Bottom left */}
-      <Stack
-        stackingDirection="right"
-        offsetY="bottom"
-        anchorPos={{ x: leftEdge, y: bottomEdge }}
-      >
-        <RetryIcon />
-        <ExecuteOnceIcon />
-        <AlwaysOutputIcon />
-      </Stack>
+      <SettingsBadges />
 
       {/* Bottom right */}
       <Stack
@@ -86,23 +68,6 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         <DeleteIcon />
       </Stack>
 
-      {/* Inputs */}
-      <Stack
-        stackingDirection="down"
-        offsetX="right"
-        anchorPos={{ x: IOLeftEdge, y: IOTopEdge }}
-      >
-        <IOIcon />
-      </Stack>
-
-      {/* Outputs */}
-      <Stack
-        stackingDirection="down"
-        anchorPos={{ x: IORightEdge, y: IOTopEdge }}
-      >
-        <IOIcon />
-      </Stack>
-
       {/* Debug */}
       <DebugRect
         x={leftEdge}
@@ -110,14 +75,6 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         width={rightEdge - leftEdge}
         height={bottomEdge - topEdge}
         color="red"
-      />
-
-      <DebugRect
-        x={IOLeftEdge}
-        y={IOTopEdge}
-        width={IORightEdge - IOLeftEdge}
-        height={bottomEdge - IOTopEdge}
-        color="green"
       />
     </g>
   );
@@ -142,33 +99,6 @@ const NodeRect = ({
       width={width}
       height={height}
       rx={NODE_RADIUS}
-    />
-  );
-};
-
-const DebugRect = ({
-  x,
-  y,
-  width,
-  height,
-  color,
-}: {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  color: string;
-}) => {
-  return (
-    <rect
-      pointerEvents="none"
-      x={x}
-      y={y}
-      width={width}
-      height={height}
-      stroke={color}
-      fill="transparent"
-      strokeWidth="0.2"
     />
   );
 };

@@ -8,6 +8,11 @@ export const getStackDimensions = (
   let stackHeight = 0,
     stackWidth = 0;
 
+  // Handle empty childDimensions case
+  if (childDimensions.size === 0) {
+    return { stackHeight: 0, stackWidth: 0 };
+  }
+
   const isHorizontal =
     stackingDirection === "right" || stackingDirection === "left";
 

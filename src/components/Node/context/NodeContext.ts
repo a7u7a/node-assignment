@@ -20,6 +20,9 @@ export interface NodePositions {
   bottomEdge: number;
   centerX: number;
   centerY: number;
+  IOTopEdge: number;
+  IOLeftEdge: number;
+  IORightEdge: number;
 }
 
 export interface NodeDimensions {
