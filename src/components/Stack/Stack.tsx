@@ -2,11 +2,12 @@ import { Children, ReactElement, useMemo } from "react";
 import { StackProvider } from "@/components/Stack/context/StackContext";
 import { useStackContext } from "@/components/Stack/hooks";
 // import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
-import { getStackWidth, getStackHeight } from "@/components/Stack/utils";
+import { getStackDimensions } from "@/components/Stack/utils";
 
 interface StackProps {
-  align?: "right-bottom" | "left-bottom" | "right-top" | "left-top";
-  stackingDirection?: "right" | "left" | "top" | "down";
+  stackingDirection?: "right" | "left" | "up" | "down";
+  offsetX?: "left" | "right";
+  offsetY?: "top" | "bottom";
   anchorPos: {
     x: number;
     y: number;
@@ -17,93 +18,81 @@ interface StackProps {
 
 const StackContent = ({
   stackingDirection = "right",
-  align = "left-top",
+  offsetX = "left",
+  offsetY = "top",
   anchorPos,
   gap = 5,
   children,
 }: StackProps) => {
   const { childDimensions } = useStackContext();
-  const stackHeight = getStackHeight(childDimensions);
-  const stackWidth = getStackWidth(childDimensions);
+  const { stackHeight, stackWidth } = getStackDimensions(
+    childDimensions,
+    gap,
+    stackingDirection
+  );
   const childArray = Children.toArray(children) as ReactElement[];
 
   const childPositions = useMemo(() => {
+    if (childDimensions.size === 0) return [];
+
     const positions: Array<{ x: number; y: number }> = [];
     let currentOffset = 0;
 
+    // When stacking direction is left or up we must reverse the order of the children
+    if (stackingDirection === "right" || stackingDirection === "up") {
+      childArray.reverse();
+    }
+
     // Calculate relative positions based on stacking direction
     childArray.forEach((_, index) => {
-      const dims = childDimensions.get(index);
-
+      const dims = childDimensions.get(index) ?? { width: 0, height: 0 };
       switch (stackingDirection) {
         case "right":
           positions.push({ x: currentOffset, y: 0 });
-          if (dims) {
-            currentOffset += dims.width + gap;
-          }
+          currentOffset += dims.width + gap;
           break;
         case "left":
           positions.push({ x: -currentOffset, y: 0 });
-          if (dims) {
-            currentOffset += dims.width + gap;
-          }
+          currentOffset += dims.width + gap;
           break;
         case "down":
           positions.push({ x: 0, y: currentOffset });
-          if (dims) {
-            currentOffset += dims.height + gap;
-          }
+          currentOffset += dims.height + gap;
           break;
-        case "top":
+        case "up":
           positions.push({ x: 0, y: -currentOffset });
-          if (dims) {
-            currentOffset += dims.height + gap;
-          }
+          currentOffset += dims.height + gap;
           break;
       }
     });
 
-    // Apply alignment offset to position the stack relative to anchor
-    let alignOffsetX = 0;
-    let alignOffsetY = 0;
-
-    const isHorizontal = stackingDirection === "right" || stackingDirection === "left";
-    const totalWidth = isHorizontal ? stackWidth + (childArray.length - 1) * gap : Math.max(...Array.from(childDimensions.values()).map(d => d.width));
-    const totalHeight = !isHorizontal ? stackHeight + (childArray.length - 1) * gap : Math.max(...Array.from(childDimensions.values()).map(d => d.height));
-
-    // Horizontal alignment
-    if (align.includes("right")) {
-      alignOffsetX = -totalWidth;
-    } else if (align.includes("left")) {
-      alignOffsetX = 0;
+    if (stackingDirection === "left") {
+      const firstChildWidth = childDimensions.get(0)?.width ?? 0;
+      positions.forEach((position) => {
+        position.x -= firstChildWidth;
+      });
     }
-
-    // Vertical alignment
-    if (align.includes("bottom")) {
-      alignOffsetY = -totalHeight;
-    } else if (align.includes("top")) {
-      alignOffsetY = 0;
+    if (stackingDirection === "up") {
+      const firstChildHeight = childDimensions.get(0)?.height ?? 0;
+      positions.forEach((position) => {
+        position.y -= firstChildHeight;
+      });
     }
-
-    // Apply alignment offset to all positions
-    positions.forEach((pos) => {
-      pos.x += alignOffsetX;
-      pos.y += alignOffsetY;
-    });
 
     return positions;
-  }, [
-    childDimensions,
-    childArray,
-    stackingDirection,
-    align,
-    gap,
-    stackWidth,
-    stackHeight,
-  ]);
+  }, [childDimensions, childArray, stackingDirection, gap]);
+
+  const effectiveAnchorPos = useMemo(() => {
+    return {
+      x: anchorPos.x + (offsetX === "left" ? 0 : -stackWidth),
+      y: anchorPos.y + (offsetY === "top" ? 0 : -stackHeight),
+    };
+  }, [anchorPos, offsetX, offsetY, stackWidth, stackHeight]);
 
   return (
-    <g transform={`translate(${anchorPos.x}, ${anchorPos.y})`}>
+    <g
+      transform={`translate(${effectiveAnchorPos.x}, ${effectiveAnchorPos.y})`}
+    >
       {childArray.map((child, index) => {
         const position = childPositions[index] || { x: 0, y: 0 };
         return (
@@ -112,6 +101,19 @@ const StackContent = ({
           </g>
         );
       })}
+      {/* Debug */}
+      {/* <circle cx={0} cy={0} r={1} fill="red" />
+      {childPositions.map((position, index) => {
+        return (
+          <circle
+            key={index}
+            cx={position.x}
+            cy={position.y}
+            r={1}
+            fill="blue"
+          />
+        );
+      })} */}
     </g>
   );
 };

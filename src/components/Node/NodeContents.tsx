@@ -1,6 +1,17 @@
 import { NodeType } from "@/types";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
-import { PlayIcon, EnabledIcon } from "@/components/icons";
+import {
+  PlayIcon,
+  EnabledIcon,
+  WarningIcon,
+  ExecuteOnceIcon,
+  IssueIcon,
+  DeleteIcon,
+  DeltaIcon,
+  AlwaysOutputIcon,
+  RetryIcon,
+  ErrorIcon,
+} from "@/components/icons";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
 import styles from "@/components/Node/Node.module.css";
@@ -22,7 +33,8 @@ const NodeContents = ({ data }: NodeContainerProps) => {
     nodePositions,
   } = useNodeContext();
   const { width, height } = nodeDimensions;
-  const { rectX, rectY, rightEdge, topEdge, leftEdge } = nodePositions;
+  const { rectX, rectY, rightEdge, topEdge, leftEdge, bottomEdge } =
+    nodePositions;
   const nodeClass = `${styles.node} ${hovered ? styles.nodeHovered : ""}}`;
 
   return (
@@ -43,17 +55,36 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         rx={nodeRadius}
       />
       <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
-        <NodeText title={title} />
-        <NodeText title={subtitle} />
+        <NodeText alignmentBaseline="hanging" title={title} />
+        <NodeText alignmentBaseline="hanging" title={subtitle} />
       </Stack>
       <Stack
+        gap={10}
         stackingDirection="left"
-        align="right-top"
         anchorPos={{ x: rightEdge, y: topEdge }}
       >
+        <DeleteIcon />
         <PlayIcon />
         <EnabledIcon />
+        <ExecuteOnceIcon />
+        <IssueIcon /> 
+        <DeltaIcon /> 
+        <AlwaysOutputIcon />
+        <WarningIcon /> 
+        <RetryIcon />
+        <ErrorIcon />
       </Stack>
+      {/* Debug */}
+      <rect
+        pointerEvents="none"
+        x={leftEdge}
+        y={topEdge}
+        width={rightEdge - leftEdge}
+        height={bottomEdge - topEdge}
+        stroke="red"
+        fill="transparent"
+        strokeWidth="1"
+      />
     </g>
   );
 };
