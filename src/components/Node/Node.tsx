@@ -8,7 +8,7 @@ interface NodeProps {
 }
 
 const Node = ({ initialState }: NodeProps) => {
-  const { width, height } = useControls("Dimensions", {
+  const { width, height } = useControls("Node Dimensions", {
     width: { value: 345, min: 300, max: 600, step: 1 },
     height: { value: 116, min: 80, max: 300, step: 1 },
   });

@@ -9,7 +9,7 @@ const IO = () => {
   const { nodePositions } = useNodeContext();
   const { IOTopEdge, IOLeftEdge, IORightEdge, bottomEdge } = nodePositions;
 
-  const { numInputs, numOutputs } = useControls("IO", {
+  const { numInputs, numOutputs } = useControls("Node IO", {
     numInputs: { options: [0, 1, 2, 3], value: 1 },
     numOutputs: { options: [0, 1, 2, 3], value: 1 },
   });

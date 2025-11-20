@@ -1,7 +1,7 @@
 import { ReactNode, useRef, useEffect, useState } from "react";
-import useMeasure from "react-use-measure";
 import { zoom, ZoomBehavior, D3ZoomEvent } from "d3-zoom";
 import { select } from "d3-selection";
+import useMeasure from "react-use-measure";
 import styles from "@/components/Canvas/Canvas.module.css";
 
 interface CanvasProps {

@@ -1,4 +1,5 @@
-import { useContext, useRef, useEffect, useCallback, useState } from "react";
+import { useContext, useRef, useEffect } from "react";
+import { useSVGMeasure } from "@/utils/useSVGMeasure";
 import { StackContext } from "@/components/Stack/context/context";
 
 export const useStackContext = () => {
@@ -9,11 +10,10 @@ export const useStackContext = () => {
   return context;
 };
 
-// TO-DO move to lib
 export const useStackChild = () => {
   const { setChildDimensions, registerChild } = useStackContext();
   const indexRef = useRef<number | null>(null);
-  const [element, setElement] = useState<SVGGraphicsElement | null>(null);
+  const [ref, bounds] = useSVGMeasure();
 
   useEffect(() => {
     if (indexRef.current === null) {
@@ -21,30 +21,14 @@ export const useStackChild = () => {
     }
   }, [registerChild]);
 
-  const ref = useCallback((el: SVGGraphicsElement | null) => {
-    setElement(el);
-  }, []);
-
-  // Can't rely on useMeasure here
-  // More involved than I would like, but it works
   useEffect(() => {
-    if (indexRef.current !== null && element) {
-      try {
-        const bbox = element.getBBox();
-        setChildDimensions(indexRef.current, {
-          width: bbox.width,
-          height: bbox.height,
-        });
-      } catch (e) {
-        // If getBBox fails, set dimensions to 0
-        console.warn("getBBox failed:", e);
-        setChildDimensions(indexRef.current, {
-          width: 0,
-          height: 0,
-        });
-      }
+    if (indexRef.current !== null) {
+      setChildDimensions(indexRef.current, {
+        width: bounds.width,
+        height: bounds.height,
+      });
     }
-  }, [setChildDimensions, element]);
+  }, [setChildDimensions, bounds.width, bounds.height]);
 
   return { ref };
 };
