@@ -1,8 +1,10 @@
 import IconWrapper from "./IconWrapper";
+import { DEFAULT_ICON_HEIGHT } from "./constants";
+import { IconProps } from "./types";
 
-const ErrorIcon = () => {
+const ErrorIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {
   return (
-    <IconWrapper viewBox="0 0 18 18">
+    <IconWrapper viewBox="0 0 18 18" height={height}>
       <ErrorPath />
     </IconWrapper>
   );

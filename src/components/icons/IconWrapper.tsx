@@ -1,8 +1,8 @@
 import { useStackChild } from "@/components/Stack/hooks";
-import { IconProps } from "./types";
+import { IconWrapperProps } from "./types";
 import { DEFAULT_ICON_HEIGHT } from "./constants";
 
-const IconWrapper = ({ children, viewBox, height = DEFAULT_ICON_HEIGHT }: IconProps) => {
+const IconWrapper = ({ children, viewBox, height = DEFAULT_ICON_HEIGHT }: IconWrapperProps) => {
   const { ref } = useStackChild();
   
   // Calculate width based on viewBox aspect ratio

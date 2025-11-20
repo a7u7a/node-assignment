@@ -1,7 +1,8 @@
 import IconWrapper from "./IconWrapper";
 import { DEFAULT_ICON_HEIGHT } from "./constants";
+import { IconProps } from "./types";
 
-const IssueIcon = ({ height = DEFAULT_ICON_HEIGHT }: { height?: number }) => {
+const IssueIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {
   return (
     <IconWrapper viewBox="0 0 18 18" height={height}>
       <IssuePath />

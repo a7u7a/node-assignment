@@ -1,8 +1,10 @@
 import IconWrapper from "./IconWrapper";
+import { DEFAULT_ICON_HEIGHT } from "./constants";
+import { IconProps } from "./types";
 
-const WarningIcon = () => {
+const WarningIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {
   return (
-    <IconWrapper viewBox="0 0 19 18">
+    <IconWrapper viewBox="0 0 19 18" height={height}>
       <WarningPath />
     </IconWrapper>
   );
