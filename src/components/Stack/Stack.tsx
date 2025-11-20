@@ -32,6 +32,7 @@ const StackContent = ({
   );
   const childArray = Children.toArray(children) as ReactElement[];
   console.log("childDimensions", childDimensions);
+
   console.log("stackHeight", stackHeight);
   console.log("stackWidth", stackWidth);
   const childPositions = useMemo(() => {
@@ -40,15 +41,10 @@ const StackContent = ({
     const positions: Array<{ x: number; y: number }> = [];
     let currentOffset = 0;
 
-    // When stacking direction is left or up we must reverse the order of the children
-    // if (stackingDirection === "right" || stackingDirection === "up") {
-    //   childArray.reverse();/*  */
-    // }
-
     // Calculate relative positions based on stacking direction
     childArray.forEach((_, index) => {
       const dims = childDimensions.get(index) ?? { width: 0, height: 0 };
-      const currentGap = index === childArray.length - 1/*  */ ? gap : 0;
+      const currentGap = index === childArray.length - 1 ? 0 : gap;
       switch (stackingDirection) {
         case "right":
           positions.push({ x: currentOffset, y: 0 });
@@ -70,15 +66,15 @@ const StackContent = ({
     });
 
     if (stackingDirection === "left") {
-      const firstChildWidth = childDimensions.get(0)?.width ?? 0;
-      positions.forEach((position) => {
-        position.x -= firstChildWidth;
+      positions.forEach((position, index) => {
+        const width = childDimensions.get(index)?.width ?? 0;
+        position.x -= width;
       });
     }
     if (stackingDirection === "up") {
-      const firstChildHeight = childDimensions.get(0)?.height ?? 0;
-      positions.forEach((position) => {
-        position.y -= firstChildHeight;
+      positions.forEach((position, index) => {
+        const height = childDimensions.get(index)?.height ?? 0;
+        position.y -= height;
       });
     }
 
@@ -91,7 +87,7 @@ const StackContent = ({
       y: anchorPos.y + (offsetY === "top" ? 0 : -stackHeight),
     };
   }, [anchorPos, offsetX, offsetY, stackWidth, stackHeight]);
-
+  console.log("childPositions", childPositions);
   return (
     <g
       transform={`translate(${effectiveAnchorPos.x}, ${effectiveAnchorPos.y})`}
@@ -105,7 +101,7 @@ const StackContent = ({
         );
       })}
       {/* Debug */}
-      <circle cx={0} cy={0} r={1} fill="red" />
+      {/* <circle cx={0} cy={0} r={1} fill="red" />
       {childPositions.map((position, index) => {
         return (
           <circle
@@ -116,7 +112,7 @@ const StackContent = ({
             fill="blue"
           />
         );
-      })}
+      })} */}
     </g>
   );
 };

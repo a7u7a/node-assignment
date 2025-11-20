@@ -3,14 +3,11 @@ import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import {
   PlayIcon,
   EnabledIcon,
-  WarningIcon,
   ExecuteOnceIcon,
   IssueIcon,
   DeleteIcon,
-  DeltaIcon,
   AlwaysOutputIcon,
   RetryIcon,
-  ErrorIcon,
 } from "@/components/icons";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
@@ -54,23 +51,22 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         height={height}
         rx={nodeRadius}
       />
-      {/* <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
+
+      {/* Top left */}
+      <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeText alignmentBaseline="hanging" title={title} />
         <NodeText alignmentBaseline="hanging" title={subtitle} />
-      </Stack> */}
-      <Stack
-        stackingDirection="left"
-        anchorPos={{ x: rightEdge, y: topEdge }}
-      >
+      </Stack>
+
+      {/* Top right */}
+      <Stack stackingDirection="left" anchorPos={{ x: rightEdge, y: topEdge }}>
         <EnabledIcon />
         <PlayIcon />
-        <DeleteIcon />
         <IssueIcon />
       </Stack>
-        {/* <DeltaIcon /> */}
-        {/* <WarningIcon /> */}
-        {/* <ErrorIcon /> */}
-    {/*   <Stack
+
+      {/* Bottom left */}
+      <Stack
         stackingDirection="right"
         offsetY="bottom"
         anchorPos={{ x: leftEdge, y: bottomEdge }}
@@ -78,7 +74,17 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         <RetryIcon />
         <ExecuteOnceIcon />
         <AlwaysOutputIcon />
-      </Stack> */}
+      </Stack>
+
+      {/* Bottom right */}
+      <Stack
+        stackingDirection="left"
+        offsetY="bottom"
+        anchorPos={{ x: rightEdge, y: bottomEdge }}
+      >
+        <DeleteIcon />
+      </Stack>
+
       {/* Debug */}
       <rect
         pointerEvents="none"
@@ -87,7 +93,6 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         width={rightEdge - leftEdge}
         height={bottomEdge - topEdge}
         stroke="red"
-
         fill="transparent"
         strokeWidth="0.2"
       />
