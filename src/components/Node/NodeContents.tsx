@@ -54,26 +54,31 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         height={height}
         rx={nodeRadius}
       />
-      <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
+      {/* <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeText alignmentBaseline="hanging" title={title} />
         <NodeText alignmentBaseline="hanging" title={subtitle} />
-      </Stack>
+      </Stack> */}
       <Stack
-        gap={10}
         stackingDirection="left"
         anchorPos={{ x: rightEdge, y: topEdge }}
       >
-        <DeleteIcon />
-        <PlayIcon />
         <EnabledIcon />
-        <ExecuteOnceIcon />
-        <IssueIcon  /> 
-        <DeltaIcon /> 
-        <AlwaysOutputIcon />
-        <WarningIcon /> 
-        <RetryIcon />
-        <ErrorIcon />
+        <PlayIcon />
+        <DeleteIcon />
+        <IssueIcon />
       </Stack>
+        {/* <DeltaIcon /> */}
+        {/* <WarningIcon /> */}
+        {/* <ErrorIcon /> */}
+    {/*   <Stack
+        stackingDirection="right"
+        offsetY="bottom"
+        anchorPos={{ x: leftEdge, y: bottomEdge }}
+      >
+        <RetryIcon />
+        <ExecuteOnceIcon />
+        <AlwaysOutputIcon />
+      </Stack> */}
       {/* Debug */}
       <rect
         pointerEvents="none"
@@ -82,8 +87,9 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         width={rightEdge - leftEdge}
         height={bottomEdge - topEdge}
         stroke="red"
+
         fill="transparent"
-        strokeWidth="1"
+        strokeWidth="0.2"
       />
     </g>
   );

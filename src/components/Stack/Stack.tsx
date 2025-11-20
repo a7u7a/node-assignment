@@ -31,7 +31,9 @@ const StackContent = ({
     stackingDirection
   );
   const childArray = Children.toArray(children) as ReactElement[];
-
+  console.log("childDimensions", childDimensions);
+  console.log("stackHeight", stackHeight);
+  console.log("stackWidth", stackWidth);
   const childPositions = useMemo(() => {
     if (childDimensions.size === 0) return [];
 
@@ -39,29 +41,30 @@ const StackContent = ({
     let currentOffset = 0;
 
     // When stacking direction is left or up we must reverse the order of the children
-    if (stackingDirection === "right" || stackingDirection === "up") {
-      childArray.reverse();
-    }
+    // if (stackingDirection === "right" || stackingDirection === "up") {
+    //   childArray.reverse();/*  */
+    // }
 
     // Calculate relative positions based on stacking direction
     childArray.forEach((_, index) => {
       const dims = childDimensions.get(index) ?? { width: 0, height: 0 };
+      const currentGap = index === childArray.length - 1/*  */ ? gap : 0;
       switch (stackingDirection) {
         case "right":
           positions.push({ x: currentOffset, y: 0 });
-          currentOffset += dims.width + gap;
+          currentOffset += dims.width + currentGap;
           break;
         case "left":
           positions.push({ x: -currentOffset, y: 0 });
-          currentOffset += dims.width + gap;
+          currentOffset += dims.width + currentGap;
           break;
         case "down":
           positions.push({ x: 0, y: currentOffset });
-          currentOffset += dims.height + gap;
+          currentOffset += dims.height + currentGap;
           break;
         case "up":
           positions.push({ x: 0, y: -currentOffset });
-          currentOffset += dims.height + gap;
+          currentOffset += dims.height + currentGap;
           break;
       }
     });
@@ -102,7 +105,7 @@ const StackContent = ({
         );
       })}
       {/* Debug */}
-      {/* <circle cx={0} cy={0} r={1} fill="red" />
+      <circle cx={0} cy={0} r={1} fill="red" />
       {childPositions.map((position, index) => {
         return (
           <circle
@@ -113,7 +116,7 @@ const StackContent = ({
             fill="blue"
           />
         );
-      })} */}
+      })}
     </g>
   );
 };

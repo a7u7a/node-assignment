@@ -2,14 +2,18 @@ import { useStackChild } from "@/components/Stack/hooks";
 import { IconWrapperProps } from "./types";
 import { DEFAULT_ICON_HEIGHT } from "./constants";
 
-const IconWrapper = ({ children, viewBox, height = DEFAULT_ICON_HEIGHT }: IconWrapperProps) => {
+const IconWrapper = ({
+  children,
+  viewBox,
+  height = DEFAULT_ICON_HEIGHT,
+}: IconWrapperProps) => {
   const { ref } = useStackChild();
-  
-  // Calculate width based on viewBox aspect ratio
-  const [, , viewBoxWidth, viewBoxHeight] = viewBox.split(' ').map(Number);
+
+  // base viewBox aspect ratio on height
+  const [, , viewBoxWidth, viewBoxHeight] = viewBox.split(" ").map(Number);
   const aspectRatio = viewBoxWidth / viewBoxHeight;
   const width = height * aspectRatio;
-  
+
   return (
     <svg
       ref={ref}
