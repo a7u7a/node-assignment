@@ -2,6 +2,7 @@ import { ReactNode, useRef, useEffect, useState } from "react";
 import { zoom, ZoomBehavior, D3ZoomEvent } from "d3-zoom";
 import { select } from "d3-selection";
 import useMeasure from "react-use-measure";
+import Grid from "@/components/Canvas/Grid";
 import styles from "@/components/Canvas/Canvas.module.css";
 
 interface CanvasProps {
@@ -27,7 +28,7 @@ const Canvas = ({ children }: CanvasProps) => {
       SVGSVGElement,
       unknown
     >()
-      .scaleExtent([0.1, 3])
+      .scaleExtent([0.5, 3])
       .filter((event) => !(event.target as Element).closest("[data-node]"))
       .on("zoom", (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
         const { x, y, k } = event.transform;
@@ -52,6 +53,7 @@ const Canvas = ({ children }: CanvasProps) => {
           ref={transformGroupRef}
           transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`}
         >
+          <Grid />
           {children}
         </g>
       </svg>

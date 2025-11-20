@@ -9,3 +9,5 @@ npm install
 ```bash
 npm run dev
 ```
+
+Navigate to: `http://localhost:5173/`
