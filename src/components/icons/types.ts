@@ -2,5 +2,6 @@ import { ReactNode } from "react";
 
 export interface IconProps {
   children: ReactNode;
-  scale?: number;
+  viewBox: string;
+  height?: number;
 }

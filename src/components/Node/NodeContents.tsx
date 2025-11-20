@@ -67,7 +67,7 @@ const NodeContents = ({ data }: NodeContainerProps) => {
         <PlayIcon />
         <EnabledIcon />
         <ExecuteOnceIcon />
-        <IssueIcon /> 
+        <IssueIcon  /> 
         <DeltaIcon /> 
         <AlwaysOutputIcon />
         <WarningIcon /> 
