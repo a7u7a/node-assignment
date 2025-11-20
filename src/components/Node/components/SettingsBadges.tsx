@@ -12,12 +12,13 @@ const SettingsBadges = () => {
   const { leftEdge, bottomEdge } = nodePositions;
 
   const { retryOnFail, executeOnce, alwaysOutputData } = useControls(
-    "Settings",
+    "Node Settings",
     {
       retryOnFail: { value: false },
       executeOnce: { value: false },
       alwaysOutputData: { value: false },
-    }
+    },
+    { collapsed: true }
   );
 
   return (

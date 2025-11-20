@@ -30,6 +30,7 @@ const NodeContents = ({ data }: NodeContainerProps) => {
     <g
       transform={`translate(0, 0)`}
       className={nodeClass}
+      data-node="true"
       onMouseDown={() => setSelected(true)}
       onClick={() => setSelected(!selected)}
     >

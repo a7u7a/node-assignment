@@ -13,13 +13,17 @@ const DebugRect = ({
   height: number;
   color: string;
 }) => {
-  const { debug } = useControls("Settings", {
-    debug: { value: false },
-  });
+  const { showDebugRect } = useControls(
+    "Debug",
+    {
+      showDebugRect: { value: false },
+    },
+    { collapsed: true }
+  );
 
   return (
     <>
-      {debug && (
+      {showDebugRect && (
         <rect
           pointerEvents="none"
           x={x}

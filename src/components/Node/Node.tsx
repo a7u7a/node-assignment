@@ -8,13 +8,13 @@ interface NodeProps {
 }
 
 const Node = ({ initialState }: NodeProps) => {
-  const { nodeWidth, nodeHeight } = useControls({
-    nodeWidth: { value: 345, min: 300, max: 600, step: 1 },
-    nodeHeight: { value: 116, min: 80, max: 300, step: 1 },
+  const { width, height } = useControls("Dimensions", {
+    width: { value: 345, min: 300, max: 600, step: 1 },
+    height: { value: 116, min: 80, max: 300, step: 1 },
   });
 
   return (
-    <NodeProvider nodeDimensions={{ width: nodeWidth, height: nodeHeight }}>
+    <NodeProvider nodeDimensions={{ width, height }}>
       <NodeContents data={initialState} />
     </NodeProvider>
   );
