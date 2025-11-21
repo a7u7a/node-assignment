@@ -1,6 +1,6 @@
 import IOButton from "./IOButton";
 import Stack from "@/components/Stack";
-import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import DebugRect from "@/components/Node/components/DebugRect";
 import { useControls } from "leva";
 import { useMemo } from "react";

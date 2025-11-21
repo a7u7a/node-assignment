@@ -1,5 +1,5 @@
 import { DeltaIcon } from "@/components/icons";
-import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import Stack from "@/components/Stack";
 import { useControls } from "leva";
 import CloseButton from "./CloseButton";

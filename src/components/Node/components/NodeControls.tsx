@@ -1,4 +1,4 @@
-import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import Stack from "@/components/Stack";
 import EnableButton from "./EnableButton";
 import ExecuteButton from "./ExecuteButton";

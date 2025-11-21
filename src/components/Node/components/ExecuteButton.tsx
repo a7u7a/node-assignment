@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PlayIcon } from "@/components/icons";
-import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import { useControls } from "leva";
 
 const ExecuteButton = () => {

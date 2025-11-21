@@ -11,6 +11,8 @@ export interface NodeContextType {
   setResult: (result: string) => void;
   enabled: boolean;
   setEnabled: (enabled: boolean) => void;
+  hovered: boolean;
+  setHovered: (hovered: boolean) => void;
 }
 
 export const NodeContext = createContext<NodeContextType | undefined>(

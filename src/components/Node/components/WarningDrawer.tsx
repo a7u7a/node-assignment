@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
-import { useNodeContext } from "../hooks/useNodeContext";
+import { useNodeContext } from "../context/useNodeContext";
 import {
   DRAWER_TRANSITION,
   NODE_RADIUS,

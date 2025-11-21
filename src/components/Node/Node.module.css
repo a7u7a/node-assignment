@@ -8,6 +8,15 @@
   stroke-width: var(--node-border-width);
 }
 
+.nodeRectOutline {
+  fill: none;
+  stroke: var(--node-color-hovered-border);
+  stroke-width: calc(var(--node-border-width) + 4px);
+  transition: stroke-opacity var(--node-transition-duration)
+    var(--node-transition-timing);
+  pointer-events: none;
+}
+
 .errorRect {
   fill: var(--node-color-error);
   stroke: var(--node-color-error-border);
@@ -56,70 +65,4 @@
 .codeText {
   font-family: var(--node-font-family-mono);
   font-size: var(--node-font-size-p);
-}
-
-.node:hover .nodeRect,
-.node {
-  fill: var(--node-color-hovered);
-  stroke: var(--node-color-hovered-border);
-}
-
-.node:hover .nodeText {
-  fill: var(--node-color-hovered-text);
-}
-
-/* State: Selected */
-.node.selected .nodeRect {
-  fill: var(--node-color-selected);
-  stroke: var(--node-color-selected-border);
-  stroke-width: calc(var(--node-border-width) + 1px);
-}
-
-.node.selected .nodeText {
-  fill: var(--node-color-selected-text);
-  font-weight: var(--node-font-weight-semibold);
-}
-
-/* State: Loading */
-.node.loading .nodeRect {
-  fill: var(--node-color-loading);
-  stroke: var(--node-color-loading-border);
-}
-
-.node.loading .nodeText {
-  fill: var(--node-color-loading-text);
-  font-weight: var(--node-font-weight-medium);
-}
-
-/* State: Success */
-.node.success .nodeRect {
-  fill: var(--node-color-success);
-  stroke: var(--node-color-success-border);
-}
-
-.node.success .nodeText {
-  fill: var(--node-color-success-text);
-  font-weight: var(--node-font-weight-medium);
-}
-
-/* State: Error */
-.node.error .nodeRect {
-  fill: var(--node-color-error);
-  stroke: var(--node-color-error-border);
-}
-
-.node.error .nodeText {
-  fill: var(--node-color-error-text);
-  font-weight: var(--node-font-weight-semibold);
-}
-
-/* State: Warning */
-.node.warning .nodeRect {
-  fill: var(--node-color-warning);
-  stroke: var(--node-color-warning-border);
-}
-
-.node.warning .nodeText {
-  fill: var(--node-color-warning-text);
-  font-weight: var(--node-font-weight-medium);
 }

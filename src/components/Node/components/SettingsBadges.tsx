@@ -4,7 +4,7 @@ import {
   AlwaysOutputIcon,
   RecycleIcon,
 } from "@/components/icons";
-import { useNodeContext } from "../hooks/useNodeContext";
+import { useNodeContext } from "../context/useNodeContext";
 import { useControls } from "leva";
 
 const SettingsBadges = () => {

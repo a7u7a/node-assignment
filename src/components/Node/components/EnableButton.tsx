@@ -1,5 +1,5 @@
 import { EnabledIcon } from "@/components/icons";
-import { useNodeContext } from "../hooks/useNodeContext";
+import { useNodeContext } from "../context/useNodeContext";
 import { useState } from "react";
 
 const EnableButton = () => {

@@ -1,5 +1,5 @@
 import { NodeType } from "@/types";
-import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
+import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
 import DebugRect from "@/components/Node/components/DebugRect";
@@ -18,15 +18,11 @@ interface NodeContainerProps {
 
 const NodeContents = ({ data }: NodeContainerProps) => {
   const { title, subtitle } = data;
-  const { selected, setSelected, nodePositions } = useNodeContext();
+  const { nodePositions } = useNodeContext();
   const { rightEdge, topEdge, leftEdge, bottomEdge } = nodePositions;
 
   return (
-    <g
-      data-node="true"
-      onMouseDown={() => setSelected(true)}
-      onClick={() => setSelected(!selected)}
-    >
+    <g data-node="true" className={styles.node}>
       <IO />
       <WarningRect />
       <ErrorRect />
