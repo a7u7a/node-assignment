@@ -56,7 +56,7 @@ const ErrorRect = () => {
                 <NodeText
                   alignmentBaseline="hanging"
                   text={"Error"}
-                  className={styles.codeText}
+                  className={styles.errorText}
                 />
               </g>
             </Stack>

@@ -27,6 +27,18 @@
   font-weight: var(--node-font-weight-regular);
 }
 
+.warningText {
+  fill: var(--node-color-warning-text);
+  font-family: var(--node-font-family-mono);
+  font-size: var(--node-font-size-p);
+}
+
+.errorText {
+  fill: var(--node-color-error-text);
+  font-family: var(--node-font-family-mono);
+  font-size: var(--node-font-size-p);
+}
+
 .h1 {
   fill: var(--node-color-idle-text);
   font-family: var(--node-font-family);

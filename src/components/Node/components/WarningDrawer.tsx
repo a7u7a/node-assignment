@@ -66,7 +66,7 @@ const WarningRect = () => {
                 <NodeText
                   alignmentBaseline="hanging"
                   text={"Warning"}
-                  className={styles.codeText}
+                  className={styles.warningText}
                 />
               </g>
             </Stack>

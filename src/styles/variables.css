@@ -28,6 +28,8 @@
   --node-color-warning-border: #f97316;
   --node-color-warning-text: #9a3412;
 
+  --node-color-unsaved-edits:  #BF912F;
+
   --node-border-width: 1px;
 
   --node-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
