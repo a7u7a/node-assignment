@@ -41,7 +41,7 @@ const WarningRect = () => {
         animate={{
           height: showWarning ? height + offset : height,
         }}
-        transition={DRAWER_TRANSITION}
+        transition={showWarning ? DRAWER_TRANSITION : { duration: 0 }}
       />
       {/* Animate the contents */}
       <motion.g
@@ -49,7 +49,7 @@ const WarningRect = () => {
         animate={{
           y: showWarning ? offset : 0,
         }}
-        transition={DRAWER_TRANSITION}
+        transition={showWarning ? DRAWER_TRANSITION : { duration: 0 }}
       >
         <Stack
           stackingDirection="right"

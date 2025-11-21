@@ -1,4 +1,4 @@
-import { IOIcon } from "@/components/icons";
+import IOButton from "./IOButton";
 import Stack from "@/components/Stack";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import DebugRect from "@/components/Node/components/DebugRect";
@@ -17,7 +17,7 @@ const IO = () => {
   const inputs = useMemo(
     () =>
       Array.from({ length: numInputs }, (_, i) => (
-        <IOIcon key={`input-${i}`} />
+        <IOButton key={`input-${i}`} type="input" />
       )),
     [numInputs]
   );
@@ -25,7 +25,7 @@ const IO = () => {
   const outputs = useMemo(
     () =>
       Array.from({ length: numOutputs }, (_, i) => (
-        <IOIcon key={`output-${i}`} />
+        <IOButton key={`output-${i}`} type="output" />
       )),
     [numOutputs]
   );

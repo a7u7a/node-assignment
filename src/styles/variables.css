@@ -47,5 +47,7 @@
 
   --node-transition-duration: 100ms;
   --node-transition-timing: ease-in-out;
+
+  --canvas-background-color: #e4e4e4;
 }
 

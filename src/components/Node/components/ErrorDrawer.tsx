@@ -30,7 +30,7 @@ const ErrorRect = () => {
         animate={{
           height: isError ? height + OPEN_OFFSET : height,
         }}
-        transition={DRAWER_TRANSITION}
+        transition={isError ? DRAWER_TRANSITION : { duration: 0 }}
       />
 
       {/* Animate the contents */}
@@ -39,7 +39,7 @@ const ErrorRect = () => {
         animate={{
           y: isError ? OPEN_OFFSET : 0,
         }}
-        transition={DRAWER_TRANSITION}
+        transition={isError ? DRAWER_TRANSITION : { duration: 0 }}
       >
         <Stack
           stackingDirection="right"

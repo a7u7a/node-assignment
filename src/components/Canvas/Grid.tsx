@@ -5,7 +5,7 @@ interface GridProps {
 }
 
 const Grid = ({
-  size = 20,
+  size = 22,
   strokeWidth = 2,
   strokeColor = "#C4C4C4",
 }: GridProps) => {
