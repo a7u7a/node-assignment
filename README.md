@@ -42,4 +42,4 @@ From highest to lowest priority:
 
 ## Disclaimer
 
-Admittedly, I got a bit carried away with the idea of implementing this using SVG. This lead to the creation of some layout logic that, in retrospect, I realize was not really part of the assissesment (i.e.: The [Stack component](/src/components/Stack/Stack.tsx) and [useSVGMeasure](/src/lib/useSVGMeasure.ts) hooks).
+Admittedly, I got a bit carried away with the idea of implementing this using SVG. This lead to the creation of some layout logic that, in retrospect, I realize was not really part of the assissesment (i.e.: See the [Stack component](/src/components/Stack/Stack.tsx) and [useSVGMeasure](/src/lib/useSVGMeasure.ts) hooks).
