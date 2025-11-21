@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import IconWrapper from "./IconWrapper";
-import { DEFAULT_ICON_HEIGHT } from "../../constants";
+import { DEFAULT_ICON_HEIGHT } from "../../lib/constants";
 import { IconProps } from "./types";
 
 interface PlayIconProps extends IconProps {

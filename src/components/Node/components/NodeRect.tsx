@@ -1,6 +1,6 @@
 import { useNodeContext } from "../hooks/useNodeContext";
 import styles from "../Node.module.css";
-import { NODE_RADIUS } from "@/constants";
+import { NODE_RADIUS } from "@/lib/constants";
 
 const NodeRect = () => {
   const { nodeDimensions, nodePositions } = useNodeContext();

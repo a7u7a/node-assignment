@@ -1,6 +1,6 @@
 import { useState, useMemo, ReactNode } from "react";
 import { NodeContext } from "@/components/Node/context/NodeContext";
-import { NODE_PADDING, IO_PADDING_X, IO_PADDING_TOP } from "@/constants";
+import { NODE_PADDING, IO_PADDING_X, IO_PADDING_TOP } from "@/lib/constants";
 
 interface NodeProviderProps {
   children: ReactNode;

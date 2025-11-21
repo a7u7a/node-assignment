@@ -7,7 +7,7 @@ import {
   NODE_RADIUS,
   OPEN_OFFSET,
   DRAWER_TEXT_OFFSET_Y,
-} from "@/constants";
+} from "@/lib/constants";
 import { useControls } from "leva";
 import styles from "../Node.module.css";
 import WarningIcon from "@/components/icons/WarningIcon";

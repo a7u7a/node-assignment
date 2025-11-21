@@ -7,7 +7,7 @@ import {
   NODE_RADIUS,
   OPEN_OFFSET,
   DRAWER_TEXT_OFFSET_Y,
-} from "@/constants";
+} from "@/lib/constants";
 import ErrorIcon from "@/components/icons/ErrorIcon";
 import styles from "../Node.module.css";
 

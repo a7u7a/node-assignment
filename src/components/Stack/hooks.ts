@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useSVGMeasure } from "@/utils/useSVGMeasure";
+import { useSVGMeasure } from "@/lib/useSVGMeasure";
 import { StackContext, ChildIndexContext } from "@/components/Stack/context/context";
 
 export const useStackContext = () => {

@@ -1,6 +1,6 @@
 import { useStackChild } from "@/components/Stack/hooks";
 import { IconWrapperProps } from "./types";
-import { DEFAULT_ICON_HEIGHT } from "../../constants";
+import { DEFAULT_ICON_HEIGHT } from "../../lib/constants";
 
 const IconWrapper = ({
   children,

@@ -1,5 +1,5 @@
 import IconWrapper from "./IconWrapper";
-import { DEFAULT_ICON_HEIGHT } from "../../constants";
+import { DEFAULT_ICON_HEIGHT } from "../../lib/constants";
 import { IconProps } from "./types";
 
 const WarningIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {
