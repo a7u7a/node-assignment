@@ -5,6 +5,10 @@ export interface NodeContextType {
   setSelected: (selected: boolean) => void;
   nodeDimensions: NodeDimensions;
   nodePositions: NodePositions;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+  result: string;
+  setResult: (result: string) => void;
 }
 
 export const NodeContext = createContext<NodeContextType | undefined>(

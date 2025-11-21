@@ -8,10 +8,11 @@ export interface Bounds {
 }
 
 /**
- * A hook for measuring SVG elements using getBBox().
+ * A hook for measuring SVG elements.
  *
- * Uses getBBox() to get dimensions in SVG coordinate space, which are
- * zoom-proof and always return consistent values regardless of transform.
+ * For SVGSVGElement with explicit width/height attributes, uses those values.
+ * Otherwise, falls back to getBBox() to get dimensions in SVG coordinate space.
+ * Measurements are zoom-proof and always return consistent values regardless of transform.
  *
  * @returns [ref, bounds] - A callback ref and the measured bounds
  */
@@ -40,6 +41,25 @@ export const useSVGMeasure = (): [
 
     const measureElement = () => {
       try {
+        // For SVGSVGElement with explicit width/height
+        if (element instanceof SVGSVGElement) {
+          const width = element.width.baseVal.value;
+          const height = element.height.baseVal.value;
+
+          if (width > 0 && height > 0) {
+            // Use explicit dimensions, but still get x/y from getBBox
+            const bbox = element.getBBox();
+            setBounds({
+              width,
+              height,
+              x: bbox.x,
+              y: bbox.y,
+            });
+            return;
+          }
+        }
+
+        // Fallback 
         const bbox = element.getBBox();
         setBounds({
           width: bbox.width,

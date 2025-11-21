@@ -10,8 +10,8 @@ const IO = () => {
   const { IOTopEdge, IOLeftEdge, IORightEdge, bottomEdge } = nodePositions;
 
   const { numInputs, numOutputs } = useControls("Node IO", {
-    numInputs: { options: [0, 1, 2, 3], value: 1 },
-    numOutputs: { options: [0, 1, 2, 3], value: 1 },
+    numInputs: { options: [0, 1, 2, 3], value: 1, label: "Inputs" },
+    numOutputs: { options: [0, 1, 2, 3], value: 1, label: "Outputs" },
   });
 
   const inputs = useMemo(

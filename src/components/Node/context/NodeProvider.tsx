@@ -47,6 +47,8 @@ export const NodeProvider = ({
 }: NodeProviderProps) => {
   const [hovered, setHovered] = useState(false);
   const [selected, setSelected] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState("");
 
   const nodePositions = useMemo(
     () => getNodePositions(nodeDimensions),
@@ -61,8 +63,23 @@ export const NodeProvider = ({
       setSelected,
       nodeDimensions,
       nodePositions,
+      loading,
+      setLoading,
+      result,
+      setResult,
     }),
-    [hovered, setHovered, selected, setSelected, nodeDimensions, nodePositions]
+    [
+      hovered,
+      setHovered,
+      selected,
+      setSelected,
+      nodeDimensions,
+      nodePositions,
+      loading,
+      setLoading,
+      result,
+      setResult,
+    ]
   );
 
   return (

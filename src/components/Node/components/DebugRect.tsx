@@ -18,7 +18,7 @@ const DebugRect = ({
     {
       showDebugRect: { value: false },
     },
-    { collapsed: true }
+    { collapsed: false }
   );
 
   return (

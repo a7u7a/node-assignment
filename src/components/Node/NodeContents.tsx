@@ -1,6 +1,6 @@
 import { NodeType } from "@/types";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
-import { PlayIcon, EnabledIcon, DeleteIcon } from "@/components/icons";
+import { DeleteIcon } from "@/components/icons";
 import NodeText from "@/components/Node/components/NodeText";
 import Stack from "@/components/Stack";
 import DebugRect from "@/components/Node/components/DebugRect";
@@ -11,6 +11,9 @@ import {
 import SettingsBadges from "@/components/Node/components/SettingsBadges";
 import styles from "@/components/Node/Node.module.css";
 import IO from "@/components/Node/components/IO";
+import EnableButton from "@/components/Node/components/EnableButton";
+import ExecuteButton from "@/components/Node/components/ExecuteButton";
+
 interface NodeContainerProps {
   data: NodeType;
 }
@@ -36,7 +39,7 @@ const NodeContents = ({ data }: NodeContainerProps) => {
     >
       <IO />
       <NodeRect nodeDimensions={nodeDimensions} nodePositions={nodePositions} />
-      
+
       {/* Top left */}
       <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeText
@@ -53,8 +56,8 @@ const NodeContents = ({ data }: NodeContainerProps) => {
 
       {/* Top right */}
       <Stack stackingDirection="left" anchorPos={{ x: rightEdge, y: topEdge }}>
-        <EnabledIcon />
-        <PlayIcon />
+        <EnableButton />
+        <ExecuteButton />
       </Stack>
 
       {/* Bottom left */}

@@ -14,11 +14,10 @@ const SettingsBadges = () => {
   const { retryOnFail, executeOnce, alwaysOutputData } = useControls(
     "Node Settings",
     {
-      retryOnFail: { value: false },
-      executeOnce: { value: false },
-      alwaysOutputData: { value: false },
-    },
-    { collapsed: true }
+      retryOnFail: { value: true, label: "Retry on Fail" },
+      executeOnce: { value: true, label: "Execute Once" },
+      alwaysOutputData: { value: true, label: "Always Output Data" },
+    }
   );
 
   return (

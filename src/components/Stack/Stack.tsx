@@ -29,6 +29,7 @@ const StackContent = ({
     gap,
     stackingDirection
   );
+
   const childArray = Children.toArray(children) as ReactElement[];
   const childPositions = useMemo(() => {
     if (childDimensions.size === 0) return [];
