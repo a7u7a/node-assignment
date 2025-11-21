@@ -19,7 +19,7 @@ export {
   DeleteIcon,
   DeltaIcon,
   AlwaysOutputIcon,
-  RecycleIcon as RetryIcon,
+  RecycleIcon,
   ErrorIcon,
   IOIcon,
 };

@@ -2,7 +2,7 @@ import Stack from "@/components/Stack";
 import {
   ExecuteOnceIcon,
   AlwaysOutputIcon,
-  RetryIcon,
+  RecycleIcon,
 } from "@/components/icons";
 import { useNodeContext } from "../hooks/useNodeContext";
 import { useControls } from "leva";
@@ -26,7 +26,7 @@ const SettingsBadges = () => {
       offsetY="bottom"
       anchorPos={{ x: leftEdge, y: bottomEdge }}
     >
-      {retryOnFail && <RetryIcon />}
+      {retryOnFail && <RecycleIcon />}
       {executeOnce && <ExecuteOnceIcon />}
       {alwaysOutputData && <AlwaysOutputIcon />}
     </Stack>

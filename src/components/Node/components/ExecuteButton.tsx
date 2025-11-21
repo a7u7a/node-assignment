@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { PlayIcon } from "@/components/icons";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import { useControls } from "leva";
 
 const ExecuteButton = () => {
-  const { loading, setLoading, setResult, result } = useNodeContext();
+  const { loading, setLoading, setResult } = useNodeContext();
 
   const { errorOnExecution } = useControls("Node State", {
     errorOnExecution: {
@@ -17,30 +16,25 @@ const ExecuteButton = () => {
     setLoading(true);
     setResult("");
 
-    setTimeout(() => {
-      if (errorOnExecution) {
-        setResult("error");
-      } else {
-        setResult("success");
-      }
-      setLoading(false);
-    }, 2000);
+    setTimeout(
+      () => {
+        if (errorOnExecution) {
+          setResult("error");
+        } else {
+          setResult("success");
+        }
+        setLoading(false);
+      },
+      errorOnExecution ? 1000 : 2000
+    );
   };
-
-  useEffect(() => {
-    console.log("loading", loading);
-  }, [loading]);
-
-  useEffect(() => {
-    console.log("result", result);
-  }, [result]);
 
   return (
     <g
       onClick={handleClick}
       style={{ cursor: loading ? "not-allowed" : "pointer" }}
     >
-      <PlayIcon />
+      <PlayIcon loading={loading} />
     </g>
   );
 };

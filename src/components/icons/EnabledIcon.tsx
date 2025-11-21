@@ -10,7 +10,6 @@ const EnabledIcon = ({
   height = DEFAULT_ICON_HEIGHT,
   enabled,
 }: EnabledIconProps) => {
-  console.log("EnabledIcon enabled", enabled);
   return (
     <IconWrapper viewBox="0 0 18 18" height={height}>
       <EnabledPath enabled={enabled} />
