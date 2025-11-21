@@ -2,6 +2,7 @@ import { Children, ReactElement, ReactNode, useMemo } from "react";
 import { StackProvider } from "@/components/Stack/context/StackContext";
 import { useStackContext } from "@/components/Stack/hooks";
 import { getStackDimensions } from "@/components/Stack/utils";
+import { ChildIndexContext } from "@/components/Stack/context/context";
 
 interface StackProps {
   stackingDirection?: "right" | "left" | "up" | "down";
@@ -91,9 +92,11 @@ const StackContent = ({
       {childArray.map((child, index) => {
         const position = childPositions[index] || { x: 0, y: 0 };
         return (
-          <g key={index} transform={`translate(${position.x}, ${position.y})`}>
-            {child}
-          </g>
+          <ChildIndexContext.Provider key={index} value={{ index }}>
+            <g transform={`translate(${position.x}, ${position.y})`}>
+              {child}
+            </g>
+          </ChildIndexContext.Provider>
         );
       })}
       {/* Debug */}

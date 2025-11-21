@@ -8,9 +8,16 @@ export interface ChildDimensions {
 export interface StackContextType {
   childDimensions: Map<number, ChildDimensions>;
   setChildDimensions: (index: number, dimensions: ChildDimensions) => void;
-  registerChild: () => number;
 }
 
 export const StackContext = createContext<StackContextType | undefined>(
+  undefined
+);
+
+export interface ChildIndexContextType {
+  index: number;
+}
+
+export const ChildIndexContext = createContext<ChildIndexContextType | undefined>(
   undefined
 );

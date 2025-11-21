@@ -1,5 +1,13 @@
-import { useState, useMemo, ReactNode, useCallback, useRef, useEffect } from "react";
-import { StackContext, ChildDimensions } from "@/components/Stack/context/context";
+import {
+  useState,
+  useMemo,
+  ReactNode,
+  useCallback,
+} from "react";
+import {
+  StackContext,
+  ChildDimensions,
+} from "@/components/Stack/context/context";
 
 interface StackProviderProps {
   children: ReactNode;
@@ -9,21 +17,6 @@ export const StackProvider = ({ children }: StackProviderProps) => {
   const [childDimensions, setChildDimensionsState] = useState<
     Map<number, ChildDimensions>
   >(new Map());
-  
-  const nextIndexRef = useRef(0);
-
-  // Reset the counter on unmount
-  useEffect(() => {
-    return () => {
-      nextIndexRef.current = 0;
-    };
-  }, []);
-
-  const registerChild = useCallback(() => {
-    const index = nextIndexRef.current;
-    nextIndexRef.current += 1;
-    return index;
-  }, []);
 
   const setChildDimensions = useCallback(
     (index: number, dimensions: ChildDimensions) => {
@@ -40,9 +33,8 @@ export const StackProvider = ({ children }: StackProviderProps) => {
     () => ({
       childDimensions,
       setChildDimensions,
-      registerChild,
     }),
-    [childDimensions, setChildDimensions, registerChild]
+    [childDimensions, setChildDimensions]
   );
 
   return (
@@ -51,4 +43,3 @@ export const StackProvider = ({ children }: StackProviderProps) => {
     </StackContext.Provider>
   );
 };
-

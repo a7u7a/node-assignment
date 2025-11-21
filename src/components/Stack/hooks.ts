@@ -1,6 +1,6 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useSVGMeasure } from "@/utils/useSVGMeasure";
-import { StackContext } from "@/components/Stack/context/context";
+import { StackContext, ChildIndexContext } from "@/components/Stack/context/context";
 
 export const useStackContext = () => {
   const context = useContext(StackContext);
@@ -11,24 +11,22 @@ export const useStackContext = () => {
 };
 
 export const useStackChild = () => {
-  const { setChildDimensions, registerChild } = useStackContext();
-  const indexRef = useRef<number | null>(null);
+  const { setChildDimensions } = useStackContext();
+  const indexContext = useContext(ChildIndexContext);
+  
+  if (!indexContext) {
+    throw new Error("useStackChild must be used within a ChildIndexContext");
+  }
+  
+  const { index } = indexContext;
   const [ref, bounds] = useSVGMeasure();
 
   useEffect(() => {
-    if (indexRef.current === null) {
-      indexRef.current = registerChild();
-    }
-  }, [registerChild]);
-
-  useEffect(() => {
-    if (indexRef.current !== null) {
-      setChildDimensions(indexRef.current, {
-        width: bounds.width,
-        height: bounds.height,
-      });
-    }
-  }, [setChildDimensions, bounds.width, bounds.height]);
+    setChildDimensions(index, {
+      width: bounds.width,
+      height: bounds.height,
+    });
+  }, [setChildDimensions, index, bounds.width, bounds.height]);
 
   return { ref };
 };
