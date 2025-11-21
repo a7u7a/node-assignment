@@ -12,8 +12,10 @@
   --node-color-selected-border: #1d4ed8;
   --node-color-selected-text: #1e3a8a;
 
-  --node-color-loading: #fef3c7;
-  --node-color-loading-border: #f59e0b;
+  --node-color-loading: #ffde67;
+  --node-color-loading-light: #fef3c7;
+  --node-color-loading-border: #f57c0b;
+  --node-color-loading-border-light: #fbbf24;
   --node-color-loading-text: #92400e;
 
   --node-color-success: #d1fae5;
@@ -24,18 +26,23 @@
   --node-color-error-border: #ef4444;
   --node-color-error-text: #991b1b;
 
-  --node-color-warning: #fed7aa;
-  --node-color-warning-border: #f97316;
-  --node-color-warning-text: #9a3412;
+  --node-color-warning: #feaaf3;
+  --node-color-warning-border: #8a5eb1;
+  --node-color-warning-text: #5b129a;
 
-  --node-color-unsaved-edits:  #BF912F;
-  
+  --node-color-disabled: #f5f5f5;
+  --node-color-disabled-border: #d1d1d1;
+  --node-color-disabled-text: #9ca3af;
+
+  --node-color-unsaved-edits: #bf912f;
+
   --node-color-close-fill: #ef4444;
 
   --node-border-width: 1px;
 
-  --node-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --node-font-family-mono: 'Geist Mono', 'Courier New', Courier, monospace;
+  --node-font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --node-font-family-mono: "Geist Mono", "Courier New", Courier, monospace;
   --node-font-size: 14px;
   --node-font-weight-light: 300;
   --node-font-weight-regular: 400;
@@ -50,4 +57,3 @@
 
   --canvas-background-color: #e4e4e4;
 }
-

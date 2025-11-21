@@ -1,17 +1,30 @@
+@keyframes pulsateLoading {
+  0%,
+  100% {
+    fill: var(--node-color-loading);
+  }
+  50% {
+    fill: var(--node-color-loading-light);
+  }
+}
+
 .node {
   cursor: pointer;
 }
 
 .nodeRect {
-  fill: var(--node-color-idle);
-  stroke: var(--node-color-idle-border);
   stroke-width: var(--node-border-width);
+  transition: fill var(--node-transition-duration) var(--node-transition-timing),
+    stroke var(--node-transition-duration) var(--node-transition-timing);
+}
+
+.nodeRectLoading {
+  transition: fill var(--node-transition-duration) var(--node-transition-timing);
+  animation: pulsateLoading 2s ease-in-out infinite;
 }
 
 .nodeRectOutline {
-  fill: none;
-  stroke: var(--node-color-hovered-border);
-  stroke-width: calc(var(--node-border-width) + 4px);
+  stroke-width: calc(var(--node-border-width) + 2px);
   transition: stroke-opacity var(--node-transition-duration)
     var(--node-transition-timing);
   pointer-events: none;

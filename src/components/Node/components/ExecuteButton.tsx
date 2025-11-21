@@ -4,7 +4,7 @@ import { useNodeContext } from "@/components/Node/context/useNodeContext";
 import { useControls } from "leva";
 
 const ExecuteButton = () => {
-  const { loading, setLoading, setResult } = useNodeContext();
+  const { loading, setLoading, setResult, enabled } = useNodeContext();
   const [hover, setHover] = useState(false);
 
   const { errorOnExecution } = useControls("Node State", {
@@ -15,6 +15,8 @@ const ExecuteButton = () => {
   });
 
   const handleClick = () => {
+    if (!enabled) return;
+
     setLoading(true);
     setResult("");
 
@@ -34,7 +36,7 @@ const ExecuteButton = () => {
   return (
     <g
       onClick={handleClick}
-      style={{ cursor: loading ? "not-allowed" : "pointer" }}
+      style={{ cursor: loading || !enabled ? "not-allowed" : "pointer" }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
