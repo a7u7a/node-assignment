@@ -24,6 +24,7 @@ const NodeText = ({
       y={0}
       textAnchor={textAnchor}
       alignmentBaseline={alignmentBaseline}
+      style={{ pointerEvents: "none" }}
     >
       {text}
     </text>

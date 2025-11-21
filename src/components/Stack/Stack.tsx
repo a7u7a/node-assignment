@@ -97,9 +97,9 @@ const StackContent = ({
           </ChildIndexContext.Provider>
         );
       })}
-      
+
       {/* Debug */}
-      {childPositions.map((position, index) => {
+      {/*  {childPositions.map((position, index) => {
         return (
           <circle
             key={index}
@@ -110,7 +110,7 @@ const StackContent = ({
           />
         );
       })}
-      <circle cx={0} cy={0} r={1} fill="red" />
+      <circle cx={0} cy={0} r={1} fill="red" /> */}
     </g>
   );
 };
