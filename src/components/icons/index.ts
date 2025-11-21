@@ -3,7 +3,7 @@ import EnabledIcon from "@/components/icons/EnabledIcon";
 import WarningIcon from "@/components/icons/WarningIcon";
 import ExecuteOnceIcon from "@/components/icons/ExecuteOnceIcon";
 import IssueIcon from "@/components/icons/IssueIcon";
-import DeleteIcon from "@/components/icons/DeleteIcon";
+import CloseIcon from "@/components/icons/CloseIcon";
 import DeltaIcon from "@/components/icons/DeltaIcon";
 import AlwaysOutputIcon from "@/components/icons/AlwaysOutputIcon";
 import RecycleIcon from "@/components/icons/RecycleIcon";
@@ -16,7 +16,7 @@ export {
   WarningIcon,
   ExecuteOnceIcon,
   IssueIcon,
-  DeleteIcon,
+  CloseIcon,
   DeltaIcon,
   AlwaysOutputIcon,
   RecycleIcon,

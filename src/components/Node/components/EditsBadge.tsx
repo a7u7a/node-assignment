@@ -1,7 +1,8 @@
-import { DeleteIcon, DeltaIcon } from "@/components/icons";
+import { DeltaIcon } from "@/components/icons";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import Stack from "@/components/Stack";
 import { useControls } from "leva";
+import CloseButton from "./CloseButton";
 
 const EditsBadge = () => {
   const { nodePositions } = useNodeContext();
@@ -17,7 +18,7 @@ const EditsBadge = () => {
       offsetY="bottom"
       anchorPos={{ x: rightEdge, y: bottomEdge }}
     >
-      <DeleteIcon />
+      <CloseButton />
       {unsavedEdits && <DeltaIcon />}
     </Stack>
   );

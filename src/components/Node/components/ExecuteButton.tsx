@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { PlayIcon } from "@/components/icons";
 import { useNodeContext } from "@/components/Node/hooks/useNodeContext";
 import { useControls } from "leva";
 
 const ExecuteButton = () => {
   const { loading, setLoading, setResult } = useNodeContext();
+  const [hover, setHover] = useState(false);
 
   const { errorOnExecution } = useControls("Node State", {
     errorOnExecution: {
@@ -33,8 +35,10 @@ const ExecuteButton = () => {
     <g
       onClick={handleClick}
       style={{ cursor: loading ? "not-allowed" : "pointer" }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <PlayIcon loading={loading} />
+      <PlayIcon loading={loading} hover={hover} />
     </g>
   );
 };

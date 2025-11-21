@@ -4,28 +4,36 @@ import { IconProps } from "./types";
 
 interface EnabledIconProps extends IconProps {
   enabled: boolean;
+  hover: boolean;
 }
 
 const EnabledIcon = ({
   height = DEFAULT_ICON_HEIGHT,
   enabled,
+  hover,
 }: EnabledIconProps) => {
   return (
     <IconWrapper viewBox="0 0 18 18" height={height}>
-      <EnabledPath enabled={enabled} />
+      <EnabledPath enabled={enabled} hover={hover} />
     </IconWrapper>
   );
 };
 
-const EnabledPath = ({ enabled }: { enabled: boolean }) => {
+const EnabledPath = ({
+  enabled,
+  hover,
+}: {
+  enabled: boolean;
+  hover: boolean;
+}) => {
   return (
     <g>
       <circle
         cx="9.04265"
         cy="9.04252"
         r="8.53081"
-        fill="#8B8B8B"
-        opacity={enabled ? 1 : 0}
+        fill="black"
+        opacity={enabled ? 1 : hover ? 0.1 : 0}
       />
 
       <path

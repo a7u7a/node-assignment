@@ -2,27 +2,37 @@ import IconWrapper from "./IconWrapper";
 import { DEFAULT_ICON_HEIGHT } from "../../constants";
 import { IconProps } from "./types";
 
-const DeleteIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {
+interface CloseIconProps extends IconProps {
+  hover: boolean;
+}
+
+const CloseIcon = ({ height = DEFAULT_ICON_HEIGHT, hover }: CloseIconProps) => {
   return (
     <IconWrapper viewBox="0 0 18 18" height={height}>
-      <DeletePath />
+      <ClosePath hover={hover} />
     </IconWrapper>
   );
 };
 
-export default DeleteIcon;
+export default CloseIcon;
 
-const DeletePath = () => {
+const ClosePath = ({ hover }: { hover: boolean }) => {
   return (
     <g>
-      <circle cx="9.04265" cy="9.04252" r="8.53081" fill="#8B8B8B" />
+      <circle
+        cx="9.04265"
+        cy="9.04252"
+        r="8.53081"
+        fill="var(--node-color-close-fill)"
+        opacity={hover ? 1 : 0}
+      />
       <path
         d="M17.1469 9.0428C17.1469 4.56693 13.5185 0.93853 9.04267 0.93853C4.56681 0.93853 0.938408 4.56693 0.938408 9.0428C0.938408 13.5187 4.56681 17.1471 9.04267 17.1471C13.5185 17.1471 17.1469 13.5187 17.1469 9.0428ZM18 9.0428C18 13.9898 13.9897 18.0001 9.04267 18.0001C4.09567 18.0001 0.0853271 13.9898 0.0853271 9.0428C0.0853271 4.09579 4.09567 0.0854492 9.04267 0.0854492C13.9897 0.0854492 18 4.09579 18 9.0428Z"
-        fill="black"
+        fill={hover ? "var(--node-color-close-fill)" : "black"}
       />
       <path
         d="M11.635 5.84082C11.8016 5.67425 12.072 5.67425 12.2385 5.84082C12.405 6.00734 12.4049 6.27678 12.2385 6.44336L9.63892 9.04199L12.2698 11.6729C12.4359 11.8394 12.436 12.1089 12.2698 12.2754C12.1032 12.442 11.8328 12.442 11.6663 12.2754L9.03638 9.64551L6.41333 12.2695C6.24677 12.4361 5.97639 12.4361 5.80981 12.2695C5.64324 12.103 5.64324 11.8326 5.80981 11.666L8.43286 9.04199L5.84009 6.4502C5.67367 6.28369 5.67377 6.01325 5.84009 5.84668C6.00664 5.68013 6.27702 5.68019 6.4436 5.84668L9.03638 8.43945L11.635 5.84082Z"
-        fill="black"
+        fill={hover ? "white" : "black"}
       />
     </g>
   );
