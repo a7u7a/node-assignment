@@ -28,7 +28,7 @@ Navigate to: `http://localhost:5173/`
 
 ## Pending
 
-From highest to lowest priority
+From highest to lowest priority:
 
 - Quick actions menu
 - Tooltips for buttons and icons
@@ -39,3 +39,7 @@ From highest to lowest priority
 - Add reset button to leva controls
 - Add custom text to leva controls
 - Simplify imports
+
+## Disclaimer
+
+Admittedly, I got a bit carried away with the idea of implementing this using SVG. This lead to the creation of some layout logic that, in retrospect, I realize was not really part of the assissesment (i.e.: The [Stack component](/src/components/Stack/Stack.tsx) and [useSVGMeasure](/src/lib/useSVGMeasure.ts) hooks).
