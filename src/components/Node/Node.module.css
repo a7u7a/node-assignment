@@ -8,6 +8,18 @@
   stroke-width: var(--node-border-width);
 }
 
+.errorRect {
+  fill: var(--node-color-error);
+  stroke: var(--node-color-error-border);
+  stroke-width: var(--node-border-width);
+}
+
+.warningRect {
+  fill: var(--node-color-warning);
+  stroke: var(--node-color-warning-border);
+  stroke-width: var(--node-border-width);
+}
+
 .nodeText {
   fill: var(--node-color-idle-text);
   font-family: var(--node-font-family);

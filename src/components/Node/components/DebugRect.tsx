@@ -16,9 +16,9 @@ const DebugRect = ({
   const { showDebugRect } = useControls(
     "Debug",
     {
-      showDebugRect: { value: false },
+      showDebugRect: { value: false, label: "Show debug" },
     },
-    { collapsed: false }
+    { collapsed: true }
   );
 
   return (

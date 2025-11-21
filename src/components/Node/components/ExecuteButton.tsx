@@ -6,8 +6,11 @@ import { useControls } from "leva";
 const ExecuteButton = () => {
   const { loading, setLoading, setResult, result } = useNodeContext();
 
-  const { errorOnExecution } = useControls("Node Settings", {
-    errorOnExecution: { value: false ,label: "Error on Execution"},
+  const { errorOnExecution } = useControls("Node State", {
+    errorOnExecution: {
+      value: false,
+      label: "Error on execution",
+    },
   });
 
   const handleClick = () => {

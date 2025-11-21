@@ -1,5 +1,5 @@
 import IconWrapper from "./IconWrapper";
-import { DEFAULT_ICON_HEIGHT } from "./constants";
+import { DEFAULT_ICON_HEIGHT } from "../../constants";
 import { IconProps } from "./types";
 
 const IOIcon = ({ height = DEFAULT_ICON_HEIGHT }: IconProps) => {

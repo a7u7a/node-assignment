@@ -14,9 +14,9 @@ const SettingsBadges = () => {
   const { retryOnFail, executeOnce, alwaysOutputData } = useControls(
     "Node Settings",
     {
-      retryOnFail: { value: true, label: "Retry on Fail" },
-      executeOnce: { value: true, label: "Execute Once" },
-      alwaysOutputData: { value: true, label: "Always Output Data" },
+      retryOnFail: { value: true, label: "Retry on fail" },
+      executeOnce: { value: true, label: "Execute once" },
+      alwaysOutputData: { value: true, label: "Always output data" },
     }
   );
 
