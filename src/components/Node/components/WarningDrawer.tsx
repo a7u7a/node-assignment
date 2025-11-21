@@ -7,6 +7,7 @@ import {
   NODE_RADIUS,
   OPEN_OFFSET,
   DRAWER_TEXT_OFFSET_Y,
+  DEFAULT_ICON_HEIGHT_SECONDARY,
 } from "@/lib/constants";
 import { useControls } from "leva";
 import styles from "../Node.module.css";
@@ -59,7 +60,7 @@ const WarningRect = () => {
             y: bottomEdge,
           }}
         >
-          <WarningIcon />
+          <WarningIcon height={DEFAULT_ICON_HEIGHT_SECONDARY} />
           <g transform={`translate(0, ${DRAWER_TEXT_OFFSET_Y})`}>
             <NodeText
               alignmentBaseline="hanging"

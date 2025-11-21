@@ -7,6 +7,7 @@ import {
   NODE_RADIUS,
   OPEN_OFFSET,
   DRAWER_TEXT_OFFSET_Y,
+  DEFAULT_ICON_HEIGHT_SECONDARY,
 } from "@/lib/constants";
 import ErrorIcon from "@/components/icons/ErrorIcon";
 import styles from "../Node.module.css";
@@ -49,7 +50,7 @@ const ErrorRect = () => {
             y: bottomEdge,
           }}
         >
-          <ErrorIcon />
+          <ErrorIcon height={DEFAULT_ICON_HEIGHT_SECONDARY} />
           <g transform={`translate(0, ${DRAWER_TEXT_OFFSET_Y})`}>
             <NodeText
               alignmentBaseline="hanging"
