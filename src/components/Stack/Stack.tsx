@@ -93,14 +93,12 @@ const StackContent = ({
         const position = childPositions[index] || { x: 0, y: 0 };
         return (
           <ChildIndexContext.Provider key={index} value={{ index }}>
-            <g transform={`translate(${position.x}, ${position.y})`}>
-              {child}
-            </g>
+            <g transform={`translate(${position.x}, ${position.y})`}>{child}</g>
           </ChildIndexContext.Provider>
         );
       })}
+      
       {/* Debug */}
-      {/* <circle cx={0} cy={0} r={1} fill="red" />
       {childPositions.map((position, index) => {
         return (
           <circle
@@ -111,7 +109,8 @@ const StackContent = ({
             fill="blue"
           />
         );
-      })} */}
+      })}
+      <circle cx={0} cy={0} r={1} fill="red" />
     </g>
   );
 };

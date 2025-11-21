@@ -1,19 +1,19 @@
 import { useStackChild } from "@/components/Stack/hooks";
 import styles from "@/components/Node/Node.module.css";
 
-interface NodeTitleProps {
-  title?: string;
+interface NodeTextProps {
+  text?: string;
   alignmentBaseline?: "auto" | "hanging";
   textAnchor?: "start" | "end";
   className?: string;
 }
 
 const NodeText = ({
-  title,
+  text,
   className = styles.nodeText,
   alignmentBaseline = "auto",
   textAnchor = "start",
-}: NodeTitleProps) => {
+}: NodeTextProps) => {
   const { ref } = useStackChild();
 
   return (
@@ -25,7 +25,7 @@ const NodeText = ({
       textAnchor={textAnchor}
       alignmentBaseline={alignmentBaseline}
     >
-      {title}
+      {text}
     </text>
   );
 };

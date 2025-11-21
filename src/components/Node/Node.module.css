@@ -25,7 +25,6 @@
   font-family: var(--node-font-family);
   font-size: var(--node-font-size);
   font-weight: var(--node-font-weight-regular);
-  transition: fill var(--node-transition-duration) var(--node-transition-timing);
 }
 
 .h1 {

@@ -7,8 +7,8 @@ import SettingsBadges from "@/components/Node/components/SettingsBadges";
 import styles from "@/components/Node/Node.module.css";
 import IO from "@/components/Node/components/IO";
 import NodeRect from "@/components/Node/components/NodeRect";
-import ErrorRect from "@/components/Node/components/ErrorRect";
-import WarningRect from "@/components/Node/components/WarningRect";
+import ErrorRect from "@/components/Node/components/ErrorDrawer";
+import WarningRect from "@/components/Node/components/WarningDrawer";
 import EditsBadge from "@/components/Node/components/EditsBadge";
 import NodeControls from "@/components/Node/components/NodeControls";
 
@@ -36,13 +36,13 @@ const NodeContents = ({ data }: NodeContainerProps) => {
       <Stack stackingDirection="down" anchorPos={{ x: leftEdge, y: topEdge }}>
         <NodeText
           alignmentBaseline="hanging"
-          title={title}
+          text={title}
           className={styles.h1}
         />
         <NodeText
           alignmentBaseline="hanging"
-          title={subtitle}
-          className={styles.codeText}
+          text={subtitle}
+          className={styles.p}
         />
       </Stack>
 
