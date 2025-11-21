@@ -9,6 +9,8 @@ export interface NodeContextType {
   setLoading: (loading: boolean) => void;
   result: string;
   setResult: (result: string) => void;
+  enabled: boolean;
+  setEnabled: (enabled: boolean) => void;
 }
 
 export const NodeContext = createContext<NodeContextType | undefined>(

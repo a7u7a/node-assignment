@@ -1,14 +1,11 @@
 import { useState, useMemo, ReactNode } from "react";
 import { NodeContext } from "@/components/Node/context/NodeContext";
+import { NODE_PADDING, IO_PADDING_X, IO_PADDING_TOP } from "@/constants";
 
 interface NodeProviderProps {
   children: ReactNode;
   nodeDimensions: { width: number; height: number };
 }
-
-const NODE_PADDING = 5;
-const IO_PADDING_X = 10;
-const IO_PADDING_TOP = 20;
 
 const getNodePositions = (nodeDimensions: {
   width: number;
@@ -49,6 +46,7 @@ export const NodeProvider = ({
   const [selected, setSelected] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
+  const [enabled, setEnabled] = useState(true);
 
   const nodePositions = useMemo(
     () => getNodePositions(nodeDimensions),
@@ -67,6 +65,8 @@ export const NodeProvider = ({
       setLoading,
       result,
       setResult,
+      enabled,
+      setEnabled,
     }),
     [
       hovered,
@@ -79,6 +79,8 @@ export const NodeProvider = ({
       setLoading,
       result,
       setResult,
+      enabled,
+      setEnabled,
     ]
   );
 
