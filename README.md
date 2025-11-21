@@ -25,3 +25,17 @@ npm run dev
 ```
 
 Navigate to: `http://localhost:5173/`
+
+## Pending
+
+From highest to lowest priority
+
+- Quick actions menu
+- Tooltips for buttons and icons
+- Improve loading icon
+- Node states must affect font color
+- Add a "Cancel" execute button on hover while loading
+- Select outside to deselect node
+- Add reset button to leva controls
+- Add custom text to leva controls
+- Simplify imports
