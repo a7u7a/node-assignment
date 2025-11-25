@@ -2,7 +2,7 @@
 
 # Node Assignment
 
-My take on the n8n "Base" node.
+My take on the [n8n](https://github.com/n8n-io/n8n) "Base" node.
 
 ## Concept
 
