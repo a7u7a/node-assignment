@@ -6,11 +6,19 @@ My take on the n8n "Base" node.
 
 ## Concept
 
-The main idea behind this design is to implement a node of variable dimensions. The concept behind it is to augment the workflow view with observability features. Allowing users to have more details available to them at a glance without having to inspect the nodes.
+I imagine n8n becoming not only a tool for unprecedented automation workflow flexibility but also for workflow **observability**. Users should be able to monitor the status and performance history of their nodes in ways that are relevant to them and their KPIs.
 
-The design implements the concept of node "drawers" which could be extended to include custom observability widgets for each node, allowing the workflow view to act as a dashboard. For instance allowing summaries, extended warning or error messages or even data-visualizations to exist in the node.
+This proof-of-concept takes a step in that direction by introducing nodes with **variable dimensions** that act as containers for performance metrics. These nodes can be customized to function as workflow dashboards, allowing users to:
 
-Separating the inputs and outputs from the main node card opens the opportunity to use of specific input/output icons to differentiate input types.
+- Assess workflow status at a glance
+- Identify bottlenecks and performance issues
+- Check usage quotas and limits
+- Browse recent activity and execution history
+- Visualize data through tables or custom charts
+
+Users can leverage default formatting or extend the implementation with their own visualizations.
+
+**Design Decision**: The input/output icons have been detached from the main node card to provide greater flexibility for laying out node contents. This approach allows each I/O "cell" to be differentiated by data type through distinct icons, making data flow more intuitive.
 
 ## How to run
 
